@@ -12,7 +12,7 @@ import InboxIcon from "@mui/icons-material/MoveToInbox"
 import MailIcon from "@mui/icons-material/Mail"
 import { Grid, Card, CardContent, ListSubheader } from "@mui/material"
 import { useRouter } from "next/router"
-import { BsBoxSeam, BsChatRightText, BsTags, BsWrench } from "react-icons/Bs"
+import { BsBoxSeam, BsChatRightText, BsTags, BsWrench } from "react-icons/bs"
 
 interface PropsType {
   toggleDrawer: (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => void
