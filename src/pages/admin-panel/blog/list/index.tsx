@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material"
 import React from "react"
 
-const index = () => {
+const Index = () => {
   return (
     <Grid container className="insideWrapper" justifyContent="center">
       <Grid item xs={12} px="4rem">
@@ -14,4 +14,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

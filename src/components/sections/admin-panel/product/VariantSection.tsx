@@ -211,5 +211,6 @@ const VariantSection = forwardRef((props: PropsType, ref) => {
     </>
   )
 })
+VariantSection.displayName = "VariantSection"
 
 export default VariantSection

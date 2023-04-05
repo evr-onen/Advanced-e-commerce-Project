@@ -115,7 +115,7 @@ interface PropsType {
   // dirs: string[]
 }
 
-const CreateProduct = forwardRef((props: PropsType, ref) => {
+const Index = forwardRef((props: PropsType, ref) => {
   // const { dirs } = props
   const { products, setProducts } = useGlobalContext()
 
@@ -294,8 +294,9 @@ const CreateProduct = forwardRef((props: PropsType, ref) => {
     </Grid>
   )
 })
+Index.displayName = "Index"
 
-export default CreateProduct
+export default Index
 
 // export const getServerSideProps: GetServerSideProps = async () => {
 //   const props = { dirs: [] }

@@ -58,7 +58,7 @@ const defaultValues = {
   properties: { id: 1, name: "", values: [{ value: "", values: [{ value: "" }] }] },
 }
 
-const index = () => {
+const Index = () => {
   const { properties, setProperties } = useGlobalContext()
 
   // ** States
@@ -279,7 +279,7 @@ const index = () => {
   )
 }
 
-export default index
+export default Index
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   resetServerContext()

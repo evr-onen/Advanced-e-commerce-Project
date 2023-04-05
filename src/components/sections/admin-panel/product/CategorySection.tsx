@@ -169,5 +169,6 @@ const TopSection = forwardRef((props: PropsType, ref) => {
     </Grid>
   )
 })
+TopSection.displayName = "TopSection"
 
 export default TopSection

@@ -151,5 +151,6 @@ const AddProperties = forwardRef((props: PropsType, ref) => {
     </Grid>
   )
 })
+AddProperties.displayName = "AddProperties"
 
 export default AddProperties

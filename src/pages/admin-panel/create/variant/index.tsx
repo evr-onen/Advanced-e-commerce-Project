@@ -291,5 +291,6 @@ const CreateVariant = forwardRef((props, ref) => {
     </Grid>
   )
 })
+CreateVariant.displayName = "CreateVariant"
 
 export default CreateVariant

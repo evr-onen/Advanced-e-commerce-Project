@@ -13,7 +13,7 @@ import ProductCard from "@/components/global/ProductCard"
 // ** Context API
 import { useGlobalContext } from "src/contexts"
 
-const index = () => {
+const Index = () => {
   const { products, wishlist } = useGlobalContext()
 
   const theme = useTheme()
@@ -53,4 +53,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

@@ -7,7 +7,7 @@ import CatList from "@/components/sections/admin-panel/CatList"
 // ** Contex
 import { useGlobalContext } from "@/contexts"
 
-const index = () => {
+const Index = () => {
   const { sectionCategory, setSectionCategory, mainCategory, setMainCategory, subCategory, setSubCategory } = useGlobalContext()
 
   // ** Calls
@@ -100,4 +100,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

@@ -56,7 +56,7 @@ function valuetext(value: number) {
   return `${value}`
 }
 
-const index = (props: ParamsType) => {
+const Index = (props: ParamsType) => {
   const { params } = props
 
   const { products, sectionCategory, mainCategory, subCategory } = useGlobalContext()
@@ -413,7 +413,7 @@ const index = (props: ParamsType) => {
   )
 }
 
-export default index
+export default Index
 
 export function getServerSideProps(context: any) {
   return {
