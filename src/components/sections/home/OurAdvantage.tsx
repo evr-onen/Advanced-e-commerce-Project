@@ -3,7 +3,7 @@ import { Box, Grid, Typography, useTheme } from "@mui/material"
 
 // ** Icons
 import { SlEarphonesAlt } from "react-icons/sl"
-import { BsCreditCard2Back } from "react-icons/Bs"
+import { BsCreditCard2Back } from "react-icons/bs"
 import { SlActionUndo } from "react-icons/sl"
 
 const OurAdvantage = () => {
