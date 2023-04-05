@@ -10,7 +10,7 @@ import FooterImage from "public/images/footer/shop1_footer_logo.png"
 
 // ** Icons
 import { FaFacebookF } from "react-icons/fa"
-import { BsTwitter, BsInstagram } from "react-icons/Bs"
+import { BsTwitter, BsInstagram } from "react-icons/bs"
 import Link from "next/link"
 
 const Index = () => {
