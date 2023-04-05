@@ -33,7 +33,7 @@ const UIWeatherNight = dynamic(() => import("mdi-material-ui/WeatherNight"), { s
 import { GiHamburgerMenu } from "react-icons/gi"
 import { ImFacebook, ImTwitter, ImInstagram } from "react-icons/im"
 import { AiOutlineUser, AiOutlineHeart } from "react-icons/ai"
-import { BsHandbag, BsTrash } from "react-icons/Bs"
+import { BsHandbag, BsTrash } from "react-icons/bs"
 
 // ** Components
 import LangDropdown from "../LangDropdown"
