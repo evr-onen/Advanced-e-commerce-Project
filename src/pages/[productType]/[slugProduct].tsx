@@ -28,7 +28,7 @@ import { MdCompareArrows } from "react-icons/md"
 
 // ** Types
 import { ProductType } from "src/types/createProduct"
-import { BsHandbag } from "react-icons/Bs"
+import { BsHandbag } from "react-icons/bs"
 import { useRouter } from "next/router"
 import TabsProduct from "@/components/sections/admin-panel/product/TabsProduct"
 // import { useRouter } from "next/navigation"
