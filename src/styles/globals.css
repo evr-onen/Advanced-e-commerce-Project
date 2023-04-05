@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Open+Sans:wght@500;700&family=Roboto+Condensed:wght@400;700&display=swap");
+
+a {
+  text-decoration: none;
+}
+
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  left: 60px !important;
+  right: auto;
+  color: white !important;
+}
+
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  right: 60px !important;
+  left: auto;
+  color: white !important;
+}
+
+.slideImage {
+  position: relative;
+}
+.sliderItem {
+  width: 100% !important;
+}
+.sliderItem .MuiButton-root {
+  position: absolute;
+  left: 30%;
+  bottom: 35%;
+  transform: translateX(-50%);
+}
+.sliderItem h4 {
+  position: absolute;
+  left: 30%;
+  bottom: 55%;
+  transform: translateX(-50%);
+}
+.link {
+  cursor: pointer;
+  text-decoration: none;
+}
+.white-Link {
+  cursor: pointer;
+  text-decoration: none;
+  color: #796c7f;
+  transition: 200ms;
+}
+.white-Link:hover {
+  color: #fefefe;
+}
+a {
+  text-decoration: none;
+}
+.imageOverlay {
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #1c1a1aa1;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+}
+.imageOverlay .imageOverlay-Btn {
+  width: 100%;
+  height: 50px;
+  background: #0088cc;
+}
+.featuredItems .link:hover .imageOverlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.swiper {
+  width: 100%;
+}
+
+.swiper-slide {
+  overflow: hidden;
+}
+
+.ProductThumb .swiper,
+.ProductSwiper .swiper {
+  width: 100%;
+  height: fit-content;
+}
+.ProductThumb .swiper-slide-thumb-active {
+  position: relative;
+  border: 1px solid black;
+}
+.ProductThumb:hover .swiper-slide-thumb-active::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #0606065f;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.miniSlider2 .swiper-slide-active {
+  width: 100%;
+}
+/* Firefox */
+input[type="number"] {
+  appearance: textfield;
+}
+
+.allProduct .imageOverlay {
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #1c1a1a3a;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+.allProduct:hover .imageOverlay {
+  opacity: 1;
+  visibility: visible;
+}
+.imageStyle {
+  width: 100% !important;
+  height: auto !important;
+}
+/* .createPropertyPage_PropertiesDnD .fabPlus {
+  opacity: 0;
+  visibility: hidden;
+  transition: 300;
+}
+.createPropertyPage_PropertiesDnD .valueCard:hover .fabPlus {
+  opacity: 1;
+  visibility: visible;
+} */
+.searchOverlay {
+  z-index: 10;
+  transform: translateX(-50%);
+  top: 100%;
+  left: 50%;
+}
+
+.searchOverlay-open {
+  opacity: 1;
+  visibility: visible;
+}
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.homePage .featuredProducts .swiper-wrapper {
+  height: 360px;
+}
