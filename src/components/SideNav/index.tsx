@@ -19,7 +19,7 @@ import {
 } from "@mui/material"
 import { useTheme } from "@mui/material"
 // ** Icons
-import { BsBoxSeam, BsTags, BsImages, BsWrench, BsChatRightText, BsChevronCompactDown, BsChevronCompactUp } from "react-icons/Bs"
+import { BsBoxSeam, BsTags, BsImages, BsWrench, BsChatRightText, BsChevronCompactDown, BsChevronCompactUp } from "react-icons/bs"
 
 // ** Types
 interface PropsType {
