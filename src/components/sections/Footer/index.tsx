@@ -13,7 +13,7 @@ import { FaFacebookF } from "react-icons/fa"
 import { BsTwitter, BsInstagram } from "react-icons/Bs"
 import Link from "next/link"
 
-const index = () => {
+const Index = () => {
   const theme = useTheme()
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"))
   return (
@@ -196,4 +196,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

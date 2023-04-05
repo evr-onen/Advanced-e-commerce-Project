@@ -26,7 +26,7 @@ interface PropsType {
   children: ReactNode
 }
 
-const index = (props: PropsType) => {
+const Index = (props: PropsType) => {
   const { children } = props
 
   // ** States
@@ -293,4 +293,4 @@ const index = (props: PropsType) => {
   )
 }
 
-export default index
+export default Index

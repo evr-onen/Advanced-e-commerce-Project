@@ -114,3 +114,4 @@ export const QuickAdd = forwardRef((props: PropsType, inputRef) => {
     </Grid>
   )
 })
+QuickAdd.displayName = "QuickAdd"

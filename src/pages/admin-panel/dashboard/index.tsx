@@ -1,7 +1,7 @@
 import { Box, Collapse, Grid, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Typography } from "@mui/material"
 import React from "react"
 
-const index = () => {
+const Index = () => {
   const [open, setOpen] = React.useState(true)
 
   const handleClick = () => {
@@ -19,4 +19,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

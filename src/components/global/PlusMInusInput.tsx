@@ -65,5 +65,5 @@ const PlusMInusInput = forwardRef((props: PropsType, inputRef) => {
     </Grid>
   )
 })
-
+PlusMInusInput.displayName = "PlusMInusInput"
 export default PlusMInusInput

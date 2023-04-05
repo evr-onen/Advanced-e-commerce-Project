@@ -26,7 +26,7 @@ interface PropsType {
 }
 // ** Vars
 let totalPrice = 0
-const index = () => {
+const Index = () => {
   const { products, cartProducts, setCartProducts } = useGlobalContext()
 
   // ** Calls
@@ -125,4 +125,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

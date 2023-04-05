@@ -190,5 +190,5 @@ const ImageSection = forwardRef((props: PropsType, ref) => {
     </Grid>
   )
 })
-
+ImageSection.displayName = "ImageSection"
 export default ImageSection

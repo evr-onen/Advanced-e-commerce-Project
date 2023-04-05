@@ -16,7 +16,7 @@ import NewsSlider from "src/components/sections/home/NewsSlider"
 import OurAdvantage from "src/components/sections/home/OurAdvantage"
 import SubscribeBlock from "src/components/sections/home/Subscribe"
 
-const index = () => {
+const Index = () => {
   const theme = useTheme()
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"))
   return (
@@ -73,4 +73,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

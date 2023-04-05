@@ -51,7 +51,7 @@ interface ParamsType {
 // ** Vars
 let tmpProductVariantsObj: ProductVariantsObjType = {}
 
-const index = (props: ParamsType) => {
+const Index = (props: ParamsType) => {
   const { params } = props
 
   // ** States
@@ -397,7 +397,7 @@ const index = (props: ParamsType) => {
   )
 }
 
-export default index
+export default Index
 
 export function getServerSideProps(context: any) {
   return {
