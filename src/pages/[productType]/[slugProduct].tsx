@@ -206,7 +206,7 @@ const Index = (props: ParamsType) => {
     <Grid container justifyContent="center">
       <Grid item maxWidth="1250px" width="100%" px="1.5625rem">
         <Grid container>
-          <Grid item xs={12}>
+          <Grid item xs={12} marginBottom="1rem">
             <UIBreadcrumbs product={product} />
           </Grid>
         </Grid>

@@ -59,21 +59,21 @@ const LoginRegister = () => {
   }
 
   return (
-    <Grid container className="home" width="1370px" height="100vh" justifyContent="center" mx="auto">
+    <Grid container className="home" maxWidth="1370px" width="100%" height="100vh" justifyContent="center" mx="auto">
       <Grid item xs={12} px="2rem" m="auto">
         <Grid container spacing={4} justifyContent="center">
           <Grid item xs={12}>
             <Typography variant="h4" fontWeight="bold" color="initial">
-              Login / Registration
+              Login {/* / Registration */}
             </Typography>
           </Grid>
           <Grid item xs={6}>
             <form onSubmit={handleSubmit(submitHandler)}>
               <Grid container spacing={4}>
                 <Grid item xs={12}>
-                  <Typography variant="h5" fontWeight="bold" textTransform="capitalize">
+                  {/* <Typography variant="h5" fontWeight="bold" textTransform="capitalize">
                     Login
-                  </Typography>
+                  </Typography> */}
                 </Grid>
                 <Grid item xs={12}>
                   <FormControl fullWidth>
