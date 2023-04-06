@@ -151,7 +151,7 @@ const CreateVariant = forwardRef((props, ref) => {
     })
     return canUdoIt
   }
-
+  console.log(checkProduct)
   return (
     <Grid container spacing={4}>
       <Grid item xs={12}>

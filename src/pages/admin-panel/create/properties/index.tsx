@@ -55,7 +55,7 @@ import { PropertyType } from "@/types/context"
 import { GetServerSideProps } from "next"
 
 const defaultValues = {
-  properties: { id: 1, name: "", values: [{ value: "", values: [{ value: "" }] }] },
+  properties: { id: Date.now(), name: "", values: [{ value: "", values: [{ value: "" }] }] },
 }
 
 const Index = () => {
@@ -102,11 +102,23 @@ const Index = () => {
   // ** All Submit Handler
   const submitHandler = (data: any) => {
     console.log(data)
-    setProperties([...properties, { ...data, id: Date.now() }])
+
+    if (properties.findIndex((item) => item.id === data.properties.id) === -1) {
+      setProperties([...properties, { ...data.properties, id: Date.now() }])
+    } else {
+      let tmpArr = [...properties]
+      tmpArr = tmpArr.filter((item) => item.id !== data.properties.id)
+      setProperties([...tmpArr, data.properties])
+    }
+    setSelectedProperty(null)
+    reset(defaultValues)
   }
+  console.log(properties)
   const editBtnHandler = () => {
     reset({ properties: selectedProperty! })
   }
+
+  console.log(errors)
 
   const deleteHandler = () => {
     if (selectedProperty) {
