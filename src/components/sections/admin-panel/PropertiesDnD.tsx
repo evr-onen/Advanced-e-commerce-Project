@@ -12,6 +12,7 @@ import { resetServerContext } from "react-beautiful-dnd"
 
 // ** Icons
 import { FaMinus, FaPlus } from "react-icons/fa"
+import { BsArrowsMove } from "react-icons/bs"
 
 // ** Types
 interface PropsType {
@@ -82,6 +83,7 @@ const PropertiesDnD = (props: PropsType) => {
                               <Grid item xs={9} md={9}>
                                 <Card sx={{ borderRadius: "15px" }}>
                                   <CardContent>
+                                    <BsArrowsMove size="30px" />
                                     <Grid container columnSpacing={4}>
                                       <Grid item xs={8} md={10}>
                                         <Controller

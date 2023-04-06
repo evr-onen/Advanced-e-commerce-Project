@@ -44,10 +44,11 @@ const App: FC<MUIAppProps> = ({ Component, pageProps, emotionCache }) => {
               <Header />
             </Grid>
           )}{" "} */}
-
-          <Grid item xs={12}>
-            <Header />
-          </Grid>
+          {firstRoute !== "login" && (
+            <Grid item xs={12}>
+              <Header />
+            </Grid>
+          )}
 
           {firstRoute === "admin-panel" ? (
             <Grid item xs={12}>
@@ -60,9 +61,11 @@ const App: FC<MUIAppProps> = ({ Component, pageProps, emotionCache }) => {
               <Component {...pageProps} />
             </Grid>
           )}
-          <Grid item xs={12}>
-            <Footer />
-          </Grid>
+          {firstRoute !== "login" && (
+            <Grid item xs={12}>
+              <Footer />
+            </Grid>
+          )}
         </Grid>
       </GlobalContextProvider>
     </PageProvider>

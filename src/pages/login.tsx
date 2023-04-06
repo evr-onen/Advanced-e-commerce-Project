@@ -21,6 +21,7 @@ const schema = yup.object().shape({
 
 // ** DummyLoginData
 import { dummyUsersData } from "@/dummyData/users"
+import { useEffect } from "react"
 
 // ** Types
 type LoginDataType = {
@@ -37,11 +38,12 @@ const LoginRegister = () => {
 
   const {
     control,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-    defaultValues: { email: "", password: "" },
+    defaultValues: { email: "admin@deneme.com", password: "1234" },
     mode: "onChange",
   })
 
@@ -57,8 +59,8 @@ const LoginRegister = () => {
   }
 
   return (
-    <Grid container className="home" width="1370px" justifyContent="center" mx="auto">
-      <Grid item xs={12} px="2rem">
+    <Grid container className="home" width="1370px" height="100vh" justifyContent="center" mx="auto">
+      <Grid item xs={12} px="2rem" m="auto">
         <Grid container spacing={4} justifyContent="center">
           <Grid item xs={12}>
             <Typography variant="h4" fontWeight="bold" color="initial">
@@ -79,16 +81,16 @@ const LoginRegister = () => {
                       control={control}
                       name="email"
                       shouldUnregister={false}
-                      render={({ field, fieldState }) => (
+                      render={({ field: { value, onChange, ref }, fieldState }) => (
                         <TextField
                           variant="standard"
                           autoComplete="off"
                           // InputLabelProps={{
                           //   sx: { color: theme.palette.text.primary },
                           // }}
-                          value={field.value}
-                          onChange={field.onChange}
-                          inputRef={field.ref}
+                          value={value || null}
+                          onChange={onChange}
+                          inputRef={ref}
                           label="E-mail"
                           fullWidth
                           error={!!fieldState.error}
@@ -113,7 +115,7 @@ const LoginRegister = () => {
                           // InputLabelProps={{
                           //   sx: { color: theme.palette.text.primary },
                           // }}
-                          value={field.value}
+                          value={field.value || null}
                           onChange={field.onChange}
                           inputRef={field.ref}
                           label="Password"

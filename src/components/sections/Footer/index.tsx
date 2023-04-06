@@ -18,7 +18,7 @@ const Index = () => {
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"))
   return (
     <Grid container marginTop="50px">
-      <Grid item xs={12} sx={{ background: "#222529" }}>
+      <Grid item xs={12} sx={{ background: "#131d2a" }}>
         <Grid container>
           <Grid item mx="auto" maxWidth="1250px" width="100%" minHeight="450px" alignItems="center" display="flex" py="1.5625rem">
             <Grid container rowGap={4} textAlign="center" flexDirection={isSmall ? "column-reverse" : "row"}>

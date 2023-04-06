@@ -94,7 +94,6 @@ const CreateVariant = forwardRef((props, ref) => {
   }
   console.log(products)
   const minuss = (index: number) => {
-    console.log(fields)
     checkProduct(getValues().variantName, getValues().variantValues[index].value) && remove(index)
   }
 
@@ -260,7 +259,13 @@ const CreateVariant = forwardRef((props, ref) => {
                               )}
                             </Grid>
                             <Grid item xs={3} md={2}>
-                              <Fab color="secondary" aria-label="delete" onClick={() => minuss(index)} size="small">
+                              <Fab
+                                color="secondary"
+                                aria-label="delete"
+                                onClick={() => minuss(index)}
+                                size="small"
+                                disabled={!checkProduct(getValues().variantName, getValues().variantValues[index].value)}
+                              >
                                 <FaMinus />
                               </Fab>
                             </Grid>

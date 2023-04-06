@@ -285,7 +285,7 @@ const Index = (props: PropsType) => {
           <Grid item width={!isLarge ? "calc(100% - 400px)" : "100%"}>
             <Card>
               <CardContent>
-                <Box sx={{ border: "0.5px solid lightGrey" }} width="100%" height="auto" display="flex" justifyContent="center">
+                <Box width="100%" height="auto" display="flex" justifyContent="center">
                   {children}
                 </Box>
               </CardContent>
