@@ -26,7 +26,7 @@ const SingleCommentSlider = () => {
           <Grid item xs={12}>
             <Grid container>
               <Grid item xs={12}>
-                <Typography textAlign="center" fontWeight="600" fontSize="1.5rem" color={theme.palette.customColors?.altText}>
+                <Typography textAlign="center" fontWeight="600" fontSize="1.5rem" color={theme.palette.customColors?.darkText}>
                   John Smith
                 </Typography>
               </Grid>
@@ -58,7 +58,7 @@ const SingleCommentSlider = () => {
           <Grid item xs={12}>
             <Grid container>
               <Grid item xs={12}>
-                <Typography textAlign="center" fontWeight="600" fontSize="1.5rem" color={theme.palette.customColors?.altText}>
+                <Typography textAlign="center" fontWeight="600" fontSize="1.5rem" color={theme.palette.customColors?.darkText}>
                   John Smith
                 </Typography>
               </Grid>

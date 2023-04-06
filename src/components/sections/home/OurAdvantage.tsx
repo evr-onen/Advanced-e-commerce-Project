@@ -31,7 +31,7 @@ const OurAdvantage = () => {
               <Grid item mb="1.25rem">
                 <Grid container>
                   <Grid item xs={12}>
-                    <Typography textAlign="center" textTransform="uppercase" color={theme.palette.customColors?.altText} fontWeight="700">
+                    <Typography textAlign="center" textTransform="uppercase" color={theme.palette.customColors?.darkText} fontWeight="700">
                       customer support
                     </Typography>
                   </Grid>
@@ -68,7 +68,7 @@ const OurAdvantage = () => {
               <Grid item mb="1.25rem">
                 <Grid container>
                   <Grid item xs={12}>
-                    <Typography textAlign="center" textTransform="uppercase" color={theme.palette.customColors?.altText} fontWeight="700">
+                    <Typography textAlign="center" textTransform="uppercase" color={theme.palette.customColors?.darkText} fontWeight="700">
                       SECURED PAYMENT
                     </Typography>
                   </Grid>
@@ -105,7 +105,7 @@ const OurAdvantage = () => {
               <Grid item mb="1.25rem">
                 <Grid container>
                   <Grid item xs={12}>
-                    <Typography textAlign="center" textTransform="uppercase" color={theme.palette.customColors?.altText} fontWeight="700">
+                    <Typography textAlign="center" textTransform="uppercase" color={theme.palette.customColors?.darkText} fontWeight="700">
                       RETURNS
                     </Typography>
                   </Grid>
