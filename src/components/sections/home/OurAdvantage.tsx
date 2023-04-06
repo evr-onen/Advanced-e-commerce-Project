@@ -14,7 +14,7 @@ const OurAdvantage = () => {
         <Grid container columnSpacing={4}>
           <Grid item xs={12} sm={4} minHeight="300px" p="1.25rem">
             <Grid container justifyContent="center">
-              <Grid item xs={12} justifyContent="center" alignItems="center" display="flex" mb="1.25rem" color="black">
+              <Grid item xs={12} justifyContent="center" alignItems="center" display="flex" mb="1.25rem">
                 <Box
                   border="2px solid"
                   color={theme.palette.secondary?.main}
@@ -31,7 +31,7 @@ const OurAdvantage = () => {
               <Grid item mb="1.25rem">
                 <Grid container>
                   <Grid item xs={12}>
-                    <Typography textAlign="center" textTransform="uppercase" color="black" fontWeight="700">
+                    <Typography textAlign="center" textTransform="uppercase" color={theme.palette.customColors?.altText} fontWeight="700">
                       customer support
                     </Typography>
                   </Grid>
@@ -68,7 +68,7 @@ const OurAdvantage = () => {
               <Grid item mb="1.25rem">
                 <Grid container>
                   <Grid item xs={12}>
-                    <Typography textAlign="center" textTransform="uppercase" color="black" fontWeight="700">
+                    <Typography textAlign="center" textTransform="uppercase" color={theme.palette.customColors?.altText} fontWeight="700">
                       SECURED PAYMENT
                     </Typography>
                   </Grid>
@@ -105,7 +105,7 @@ const OurAdvantage = () => {
               <Grid item mb="1.25rem">
                 <Grid container>
                   <Grid item xs={12}>
-                    <Typography textAlign="center" textTransform="uppercase" color="black" fontWeight="700">
+                    <Typography textAlign="center" textTransform="uppercase" color={theme.palette.customColors?.altText} fontWeight="700">
                       RETURNS
                     </Typography>
                   </Grid>

@@ -47,6 +47,9 @@ import { useGlobalContext } from "@/contexts"
 import { MdCompareArrows } from "react-icons/md"
 import { ProductType } from "@/types/createProduct"
 
+// ** Theme Imports
+import { useTheme } from "next-themes"
+
 // ** External Funcs
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -68,6 +71,7 @@ const Header = () => {
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"))
   const isLarge = useMediaQuery(theme.breakpoints.up("lg"))
   const { wishlist, cartProducts, compareProducts, setCompareProducts } = useGlobalContext()
+  const { resolvedTheme, setTheme } = useTheme()
 
   // ** Handlers
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -140,7 +144,7 @@ const Header = () => {
                       <Grid item xs={12} key={sectionIndex}>
                         <Grid container>
                           <Grid item xs={12}>
-                            <Typography variant="h6" textTransform="capitalize" fontWeight={700}>
+                            <Typography variant="h6" textTransform="capitalize" fontWeight={700} color={theme.palette.customColors?.altText}>
                               {section.value}
                             </Typography>
                           </Grid>
@@ -156,7 +160,12 @@ const Header = () => {
                                         </Typography>
                                       </Grid>
                                       <Grid item xs={6}>
-                                        <Typography variant="body2" textTransform="capitalize" fontWeight={500}>
+                                        <Typography
+                                          variant="body2"
+                                          textTransform="capitalize"
+                                          fontWeight={500}
+                                          color={theme.palette.customColors?.altText}
+                                        >
                                           {compareProduct?.productProperties![sectionIndex][index]!}
                                         </Typography>
                                       </Grid>
@@ -181,7 +190,7 @@ const Header = () => {
 
   return (
     <Grid container className="header-main" justifyContent="center" marginBottom="5px" alignItems="center">
-      <Grid item xs={12} sx={{ background: "cornflowerblue" }}>
+      <Grid item xs={12} sx={{ background: theme.palette.background.paper }}>
         <Grid container justifyContent="space-between" alignItems="center">
           <Grid item sx={{ maxWidth: "1250px", width: "100%", py: "10px" }} mx="auto" px="1.5rem">
             <Grid container justifyContent="space-between" alignItems="center" spacing={1}>
@@ -189,14 +198,23 @@ const Header = () => {
                 <LangDropdown />
               </Grid>
               <Grid item>
+                <IconButton color="inherit" aria-label="themeBtn" onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}>
+                  {resolvedTheme === "light" ? (
+                    <UIWeatherNight sx={{ color: theme.palette.text.primary }} />
+                  ) : (
+                    <UIWeatherSunny sx={{ color: theme.palette.text.primary }} />
+                  )}
+                </IconButton>
+              </Grid>
+              <Grid item>
                 <Stack direction="row" spacing={4} sx={{ color: "aliceblue" }}>
                   <Link href="/admin-panel/dashboard">
                     <Button
                       size="small"
                       variant="outlined"
-                      sx={{ border: "1px solid rgb(205 214 218 / 50%)", color: "aliceblue", "&:hover": { border: "1px solid #fff" } }}
+                      sx={{ border: "1px solid rgb(205 214 218 / 50%)", "&:hover": { border: "1px solid #fff" } }}
                     >
-                      <Typography color="aliceblue" fontWeight="700" fontSize="14px">
+                      <Typography fontWeight="700" fontSize="14px">
                         Dashboard
                       </Typography>
                     </Button>
@@ -205,9 +223,9 @@ const Header = () => {
                     <Button
                       size="small"
                       variant="outlined"
-                      sx={{ border: "1px solid rgb(205 214 218 / 50%)", color: "aliceblue", "&:hover": { border: "1px solid #fff" } }}
+                      sx={{ border: "1px solid rgb(205 214 218 / 50%)", "&:hover": { border: "1px solid #fff" } }}
                     >
-                      <Typography color="aliceblue" fontWeight="700" fontSize="14px">
+                      <Typography fontWeight="700" fontSize="14px">
                         AllProducts
                       </Typography>
                     </Button>
@@ -217,7 +235,7 @@ const Header = () => {
               <Grid item xs={12} md={12} lg={8}>
                 <Grid container columnSpacing={4} justifyContent="space-between" alignItems="center">
                   <Grid item className="note" display="flex" xs={2}>
-                    <Typography variant="body2" my="auto" textTransform="uppercase" fontWeight={700} color="black" textAlign="center">
+                    <Typography variant="body2" my="auto" textTransform="uppercase" fontWeight={700} textAlign="center">
                       welcome to porto!
                     </Typography>
                   </Grid>
@@ -229,7 +247,7 @@ const Header = () => {
                           size="small"
                           sx={{ color: theme?.palette?.text?.secondary, fontWeight: "bold", letterSpacing: "0.275px" }}
                         >
-                          <Typography variant="body2" color={theme?.palette?.text?.secondary} fontWeight="700" letterSpacing="0.275px">
+                          <Typography variant="body2" color={theme?.palette?.text?.primary} fontWeight="700" letterSpacing="0.275px">
                             contact us
                           </Typography>
                         </Button>
@@ -240,7 +258,7 @@ const Header = () => {
                           size="small"
                           sx={{ color: theme?.palette?.text?.secondary, fontWeight: "bold", letterSpacing: "0.275px" }}
                         >
-                          <Typography variant="body2" color={theme?.palette?.text?.secondary} fontWeight="700" letterSpacing="0.275px">
+                          <Typography variant="body2" color={theme?.palette?.text?.primary} fontWeight="700" letterSpacing="0.275px">
                             my account
                           </Typography>
                         </Button>
@@ -251,7 +269,7 @@ const Header = () => {
                           size="small"
                           sx={{ color: theme?.palette?.text?.secondary, fontWeight: "bold", letterSpacing: "0.275px" }}
                         >
-                          <Typography variant="body2" color={theme?.palette?.text?.secondary} fontWeight="700" letterSpacing="0.275px">
+                          <Typography variant="body2" color={theme?.palette?.text?.primary} fontWeight="700" letterSpacing="0.275px">
                             my wishlist
                           </Typography>
                         </Button>
@@ -262,14 +280,14 @@ const Header = () => {
                           size="small"
                           sx={{ color: theme?.palette?.text?.secondary, fontWeight: "bold", letterSpacing: "0.275px" }}
                         >
-                          <Typography variant="body2" color={theme?.palette?.text?.secondary} fontWeight="700" letterSpacing="0.275px">
+                          <Typography variant="body2" color={theme?.palette?.text?.primary} fontWeight="700" letterSpacing="0.275px">
                             cart
                           </Typography>
                         </Button>
                       </Grid>
                       <Grid item>
                         <Button variant="text" size="small">
-                          <Typography variant="body2" color={theme?.palette?.text?.secondary} fontWeight="700" letterSpacing="0.275px">
+                          <Typography variant="body2" color={theme?.palette?.text?.primary} fontWeight="700" letterSpacing="0.275px">
                             login
                           </Typography>
                         </Button>
@@ -286,17 +304,17 @@ const Header = () => {
                     <Grid container>
                       <Grid item>
                         <IconButton>
-                          <ImFacebook size="1rem" />
+                          <ImFacebook size="1rem" color={theme.palette.text.primary} />
                         </IconButton>
                       </Grid>
                       <Grid item>
                         <IconButton>
-                          <ImTwitter size="1rem" />
+                          <ImTwitter size="1rem" color={theme.palette.text.primary} />
                         </IconButton>
                       </Grid>
                       <Grid item>
                         <IconButton>
-                          <ImInstagram size="1rem" />
+                          <ImInstagram size="1rem" color={theme.palette.text.primary} />
                         </IconButton>
                       </Grid>
                     </Grid>
@@ -355,7 +373,7 @@ const Header = () => {
                 <IconButton
                   sx={{ "&.MuiIconButton-root": { color: "black" }, fontSize: "2.25rem", [theme.breakpoints.down("md")]: { fontSize: "1.75rem" } }}
                 >
-                  <AiOutlineUser />
+                  <AiOutlineUser color={theme.palette.text.primary} />
                 </IconButton>
               </Grid>
               <Grid item>
@@ -364,7 +382,7 @@ const Header = () => {
                     sx={{ "&.MuiIconButton-root": { color: "black" }, fontSize: "2.25rem", [theme.breakpoints.down("md")]: { fontSize: "1.75rem" } }}
                   >
                     <Badge color="secondary" badgeContent={wishlist.length} /* invisible={!!mailBadgeCount} */>
-                      <AiOutlineHeart />
+                      <AiOutlineHeart color={theme.palette.text.primary} />
                     </Badge>
                   </IconButton>
                 </Link>
@@ -375,7 +393,7 @@ const Header = () => {
                     sx={{ "&.MuiIconButton-root": { color: "black" }, fontSize: "2.25rem", [theme.breakpoints.down("md")]: { fontSize: "1.75rem" } }}
                   >
                     <Badge color="secondary" badgeContent={cartProducts.length} /* invisible={!!mailBadgeCount} */>
-                      <BsHandbag />
+                      <BsHandbag color={theme.palette.text.primary} />
                     </Badge>
                   </IconButton>
                 </Link>
@@ -387,9 +405,13 @@ const Header = () => {
       {compareProducts.length > 0 && (
         <Grid item xs={12} sm={2} textAlign="center" position="fixed" right="1rem" top="1rem">
           <Grid item xs={12} sm={2} textAlign="center">
-            <Fab color="primary" aria-label="delete" onClick={modalToggleHandle} size="medium">
-              <Badge color="secondary" badgeContent={compareProducts.length} /* invisible={!!mailBadgeCount} */>
-                <MdCompareArrows color="white" size="2rem" />
+            <Fab aria-label="delete" onClick={modalToggleHandle} size="medium">
+              <Badge
+                variant="standard"
+                color="primary"
+                badgeContent={<Typography> {compareProducts.length} </Typography>} /* invisible={!!mailBadgeCount} */
+              >
+                <MdCompareArrows size="2rem" />
               </Badge>
             </Fab>
           </Grid>
@@ -399,7 +421,7 @@ const Header = () => {
         <Dialog
           open={open}
           fullWidth
-          maxWidth="lg"
+          maxWidth="xl"
           TransitionComponent={Transition}
           keepMounted
           onClose={modalToggleHandle}

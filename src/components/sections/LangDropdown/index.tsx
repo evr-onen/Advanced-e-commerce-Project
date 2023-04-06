@@ -52,7 +52,7 @@ const LangDropdown = () => {
   return (
     <Fragment>
       <IconButton aria-haspopup="true" aria-controls="customized-menu" onClick={handleLangDropdownOpen}>
-        <Translate sx={{ color: "black" }} />
+        <Translate sx={{ color: theme?.palette?.text?.primary }} />
       </IconButton>
       <Menu
         anchorEl={anchorEl}

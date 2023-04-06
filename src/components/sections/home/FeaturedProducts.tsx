@@ -14,8 +14,8 @@ const FeaturedProducts = () => {
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"))
   return (
     <Grid container rowSpacing={4}>
-      <Grid item borderBottom="0.5px solid" color="black" xs={12} pb="0.625rem">
-        <Typography color="black" fontWeight="700" fontSize="1.25rem">
+      <Grid item borderBottom="0.5px solid" xs={12} pb="0.625rem">
+        <Typography fontWeight="700" fontSize="1.25rem">
           FEATURED PRODUCTS
         </Typography>
       </Grid>
@@ -30,6 +30,7 @@ const FeaturedProducts = () => {
                 alignItems="flex-start"
                 className="link"
                 padding={1}
+                sx={{ background: theme.palette.background.paper }}
                 style={{ boxShadow: "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px" }}
               >
                 <Grid item position="relative" width="100%" display="flex" justifyContent="center">
@@ -74,6 +75,7 @@ const FeaturedProducts = () => {
                 alignItems="flex-start"
                 className="link"
                 padding={1}
+                sx={{ background: theme.palette.background.paper }}
                 style={{ boxShadow: "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px" }}
               >
                 <Grid item position="relative" width="100%" display="flex" justifyContent="center">
@@ -123,6 +125,7 @@ const FeaturedProducts = () => {
                 alignItems="flex-start"
                 className="link"
                 padding={1}
+                sx={{ background: theme.palette.background.paper }}
                 style={{ boxShadow: "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px" }}
               >
                 <Grid item position="relative" width="100%" display="flex" justifyContent="center">
@@ -167,6 +170,7 @@ const FeaturedProducts = () => {
                 alignItems="flex-start"
                 className="link"
                 padding={1}
+                sx={{ background: theme.palette.background.paper }}
                 style={{ boxShadow: "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px" }}
               >
                 <Grid item position="relative" width="100%" display="flex" justifyContent="center">
@@ -216,6 +220,7 @@ const FeaturedProducts = () => {
                 alignItems="flex-start"
                 className="link"
                 padding={1}
+                sx={{ background: theme.palette.background.paper }}
                 style={{ boxShadow: "rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px" }}
               >
                 <Grid item position="relative" width="100%" display="flex" justifyContent="center">

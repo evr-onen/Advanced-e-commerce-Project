@@ -62,6 +62,7 @@ const Index = (props: PropsType) => {
                           lineHeight: "27px",
                           borderRadius: "10px",
                           backgroundColor: theme.palette.secondary.light,
+                          color: theme.palette.customColors?.darkText,
                         }}
                       >
                         Dashboard
@@ -130,6 +131,7 @@ const Index = (props: PropsType) => {
                           lineHeight: "27px",
                           borderRadius: "10px",
                           backgroundColor: theme.palette.secondary.light,
+                          color: theme.palette.customColors?.darkText,
                         }}
                       >
                         Blog
@@ -185,6 +187,7 @@ const Index = (props: PropsType) => {
                           lineHeight: "27px",
                           borderRadius: "10px",
                           backgroundColor: theme.palette.secondary.light,
+                          color: theme.palette.customColors?.darkText,
                         }}
                       >
                         Create
@@ -255,6 +258,7 @@ const Index = (props: PropsType) => {
                           lineHeight: "27px",
                           borderRadius: "10px",
                           backgroundColor: theme.palette.secondary.light,
+                          color: theme.palette.customColors?.darkText,
                         }}
                       >
                         Site Options

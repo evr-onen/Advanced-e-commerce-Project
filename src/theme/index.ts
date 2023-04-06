@@ -7,15 +7,21 @@ declare module "@mui/material/styles" {
 
   interface Palette {
     customColors?: {
-      green100: React.CSSProperties["color"]
-      green200: React.CSSProperties["color"]
+      green100?: React.CSSProperties["color"]
+      green200?: React.CSSProperties["color"]
+      header?: React.CSSProperties["color"]
+      darkText?: React.CSSProperties["color"]
+      lightText?: React.CSSProperties["color"]
     }
   }
 
   interface PaletteOptions {
     customColors?: {
-      green100: React.CSSProperties["color"]
-      green200: React.CSSProperties["color"]
+      green100?: React.CSSProperties["color"]
+      green200?: React.CSSProperties["color"]
+      header?: React.CSSProperties["color"]
+      darkText?: React.CSSProperties["color"]
+      lightText?: React.CSSProperties["color"]
     }
   }
 
@@ -29,8 +35,11 @@ declare module "@mui/material/styles" {
 
   interface ThemeOptions {
     customColors?: {
-      green100: React.CSSProperties["color"]
-      green200: React.CSSProperties["color"]
+      green100?: React.CSSProperties["color"]
+      green200?: React.CSSProperties["color"]
+      header?: React.CSSProperties["color"]
+      darkText?: React.CSSProperties["color"]
+      lightText?: React.CSSProperties["color"]
     }
   }
 }
@@ -43,7 +52,7 @@ export const DEFAULT_THEME: AllowedTheme = "light"
 import { useTheme } from "@mui/material/styles"
 
 // ** Vars
-import { deepPurple, green, lightBlue, brown } from "@mui/material/colors"
+import { deepPurple, green, lightBlue, blue, blueGrey, indigo } from "@mui/material/colors"
 
 export let lightTheme: Theme = createTheme({
   palette: {
@@ -52,6 +61,9 @@ export let lightTheme: Theme = createTheme({
     customColors: {
       green100: green[100],
       green200: green[200],
+      header: blue[700],
+      darkText: blueGrey[800],
+      lightText: blueGrey[100],
     },
 
     primary: {
@@ -65,9 +77,9 @@ export let lightTheme: Theme = createTheme({
       paper: lightBlue[100],
     },
     text: {
-      primary: "rgba(0, 0, 0, 0.87)",
-      secondary: "rgba(0, 0, 0, 0.6)",
-      disabled: "rgba(94,53,177,0.36)",
+      primary: deepPurple[900],
+      secondary: blue[600],
+      disabled: "rgba(216,213,213,0.38)",
     },
     divider: "rgba(0, 0, 0, 0.12)",
   },
@@ -93,24 +105,27 @@ export let darkTheme = createTheme({
   palette: {
     mode: "dark",
 
-    // customColors: {
-    //   face: "#ccc",
-    // },
-
+    customColors: {
+      green100: green[100],
+      green200: green[200],
+      header: blue[700],
+      darkText: blueGrey[800],
+      lightText: blueGrey[100],
+    },
     primary: {
-      main: "#4d4ddc",
+      main: deepPurple[300],
     },
     secondary: {
-      main: "#afafd2",
+      main: deepPurple[100],
     },
     background: {
-      default: "#111333",
-      paper: "#141b60",
+      default: "#371B58",
+      paper: "#4C3575",
     },
     text: {
-      secondary: "#f1bcbc",
+      primary: blue[100],
+      secondary: deepPurple[200],
       disabled: "rgba(216,213,213,0.38)",
-      primary: "#efefef",
     },
     divider: "rgba(224,190,190,0.18)",
   },

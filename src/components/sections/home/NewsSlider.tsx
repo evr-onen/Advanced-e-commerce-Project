@@ -41,9 +41,9 @@ const NewsSlider = () => {
                   <Typography
                     fontWeight="700"
                     fontSize="1.5rem"
-                    color="black"
                     textAlign="center"
-                    sx={{ "&:hover": { color: theme?.palette?.secondary?.main }, cursor: "pointer" }}
+                    color={theme?.palette?.secondary?.main}
+                    sx={{ mt: "1.5rem", "&:hover": { color: theme?.palette?.primary?.light }, cursor: "pointer" }}
                   >
                     Fashion Trends
                   </Typography>
@@ -54,7 +54,7 @@ const NewsSlider = () => {
               </Grid>
               <Grid item xs={12}>
                 <Link href="/">
-                  <Typography color="black" fontWeight="700" textAlign="end" sx={{ textDecoration: "none", cursor: "pointer" }}>
+                  <Typography fontWeight="300" textAlign="end" sx={{ textDecoration: "none", cursor: "pointer" }}>
                     read more...
                   </Typography>
                 </Link>
@@ -76,9 +76,9 @@ const NewsSlider = () => {
                   <Typography
                     fontWeight="700"
                     fontSize="1.5rem"
-                    color="black"
                     textAlign="center"
-                    sx={{ "&:hover": { color: theme?.palette?.secondary?.main }, cursor: "pointer" }}
+                    color={theme?.palette?.secondary?.main}
+                    sx={{ "&:hover": { color: theme?.palette?.primary?.light }, cursor: "pointer" }}
                   >
                     Fashion Trends
                   </Typography>
@@ -89,7 +89,7 @@ const NewsSlider = () => {
               </Grid>
               <Grid item xs={12}>
                 <Link href="/">
-                  <Typography color="black" fontWeight="700" textAlign="end" sx={{ textDecoration: "none", cursor: "pointer" }}>
+                  <Typography fontWeight="300" textAlign="end" sx={{ textDecoration: "none", cursor: "pointer" }}>
                     read more...
                   </Typography>
                 </Link>
@@ -110,9 +110,9 @@ const NewsSlider = () => {
                   <Typography
                     fontWeight="700"
                     fontSize="1.5rem"
-                    color="black"
                     textAlign="center"
-                    sx={{ "&:hover": { color: theme?.palette?.secondary?.main }, cursor: "pointer" }}
+                    color={theme?.palette?.secondary?.main}
+                    sx={{ "&:hover": { color: theme?.palette?.primary?.light }, cursor: "pointer" }}
                   >
                     Fashion Trends
                   </Typography>
@@ -123,7 +123,7 @@ const NewsSlider = () => {
               </Grid>
               <Grid item xs={12}>
                 <Link href="/">
-                  <Typography color="black" fontWeight="700" textAlign="end" sx={{ textDecoration: "none", cursor: "pointer" }}>
+                  <Typography fontWeight="300" textAlign="end" sx={{ textDecoration: "none", cursor: "pointer" }}>
                     read more...
                   </Typography>
                 </Link>
