@@ -82,7 +82,7 @@ export const GlobalContextProvider = (props: any) => {
   useEffect(() => {
     if (currentUser.name === "") {
       if (localStorage.getItem("user") !== null) {
-        setCurrentUser(JSON.parse(localStorage.getItem("user")!))
+        setCurrentUser(JSON?.parse(localStorage.getItem("user")!))
       } else {
         router.push("/login")
       }

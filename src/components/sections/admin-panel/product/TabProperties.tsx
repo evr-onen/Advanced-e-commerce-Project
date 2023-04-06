@@ -24,7 +24,7 @@ const TabProperties = (props: PropsType) => {
   const renderTable = () => {
     return productData.selected_properties?.values.map((section, sectionIndex) => {
       return (
-        <Grid item xs={4} key={sectionIndex}>
+        <Grid item xs={12} md={4} key={sectionIndex}>
           <Grid container>
             <Grid item xs={6}>
               <Typography variant="h6" textTransform="capitalize" fontWeight={700}>
