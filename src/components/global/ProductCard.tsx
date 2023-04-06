@@ -39,7 +39,7 @@ const ProductCard = (props: PropsType) => {
           sx={{
             position: "relative",
             "&:hover": {
-              boxShadow: ` ${theme.palette.text.primary} 0px 14px 28px, ${theme.palette.text.primary} 0px 10px 10px  `,
+              boxShadow: `${theme.palette.text.primary}  0px 5px 15px`,
             },
           }}
           elevation={4}

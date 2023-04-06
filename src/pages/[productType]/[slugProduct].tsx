@@ -264,7 +264,7 @@ const Index = (props: ParamsType) => {
                 </Grid>
               </Grid>
               <Grid item xs={12}>
-                <Typography variant="h5" fontWeight="700" textAlign={isLarge ? "center" : "left"}>
+                <Typography variant="h4" fontWeight="700" textAlign="center">
                   {product?.price} &#8378;
                 </Typography>
               </Grid>

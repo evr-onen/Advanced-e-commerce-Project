@@ -3,13 +3,14 @@ import React, { forwardRef, useEffect } from "react"
 import Image from "next/image"
 
 // ** MUI imports
-import { Box, Button, Card, CardContent, Fab, FormHelperText, Grid } from "@mui/material"
+import { Box, Button, Card, CardContent, Fab, FormHelperText, Grid, useMediaQuery, useTheme } from "@mui/material"
 
 // ** Third Party
 import { useFieldArray, useFormContext, useWatch } from "react-hook-form"
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
 import { ImCross } from "react-icons/im"
 import NoSSR from "react-no-ssr"
+import { BsArrowsMove } from "react-icons/bs"
 
 // ** Types
 
@@ -24,6 +25,10 @@ let tmpArr: string[] = []
 
 const ImageSection = forwardRef((props: PropsType, ref) => {
   const { productImages, takeProductImages, imageCount } = props
+
+  // ** Calls
+  const theme = useTheme()
+  const isSmall = useMediaQuery(theme.breakpoints.down("sm"))
 
   // ** Hooks
   const {
@@ -95,7 +100,7 @@ const ImageSection = forwardRef((props: PropsType, ref) => {
               <Grid item xs={12} justifyContent="center">
                 <NoSSR>
                   <DragDropContext onDragEnd={handleOnDragEnd}>
-                    <Droppable droppableId="TitleArea" direction="horizontal">
+                    <Droppable droppableId="TitleArea" direction={isSmall ? "vertical" : "horizontal"}>
                       {(provided) => (
                         <Grid
                           container
@@ -104,12 +109,14 @@ const ImageSection = forwardRef((props: PropsType, ref) => {
                           minHeight="400px"
                           className="TitleArea"
                           justifyContent="center"
+                          flexDirection={isSmall ? "column" : "row"}
+                          flexWrap="nowrap"
                           ref={provided.innerRef}
                           {...provided.droppableProps}
                         >
                           {fields.map((item: any, index) => {
                             return (
-                              <Grid item width="20%" key={item.id}>
+                              <Grid item xs={12} sm={4} md={3} key={item.id}>
                                 <Draggable key={item.id} draggableId={`DragNDrop.${item.id}`} index={index}>
                                   {(provided) => (
                                     <Card
@@ -119,7 +126,7 @@ const ImageSection = forwardRef((props: PropsType, ref) => {
                                       {...provided.dragHandleProps}
                                     >
                                       <CardContent>
-                                        <Grid item xs={1}>
+                                        <Grid item xs={1} display="flex">
                                           <Fab
                                             color="primary"
                                             aria-label="delete"
@@ -130,12 +137,15 @@ const ImageSection = forwardRef((props: PropsType, ref) => {
                                             <ImCross size="1rem" />
                                           </Fab>
                                         </Grid>
-                                        <Box width="200px" height="250px" position="relative">
+                                        <Box maxWidth="200px" width="100%" minHeight="250px" position="relative" m="auto">
                                           {item.hasOwnProperty("src") ? (
-                                            <Image src={URL?.createObjectURL(item.src)} fill className="imageStyle" alt="asda1" />
+                                            <img src={URL?.createObjectURL(item.src)} className="imageStyle" alt="asda1" />
                                           ) : (
-                                            <Image src={`/images/productImages/${item.name}`} fill className="imageStyle" alt="asda2" />
+                                            <img src={`/images/productImages/${item.name}`} className="imageStyle" alt="asda2" />
                                           )}
+                                          <Grid item xs={1} sx={{ position: "absolute", bottom: 0, right: "50%", transform: "translateX(50%)" }}>
+                                            <BsArrowsMove size="30px" />
+                                          </Grid>
                                         </Box>
                                       </CardContent>
                                     </Card>
@@ -152,38 +162,6 @@ const ImageSection = forwardRef((props: PropsType, ref) => {
                 </NoSSR>
               </Grid>
             </Grid>
-
-            {/* {fields.map((item: any, index) => {
-              console.log(item)
-              return (
-                <Grid item key={index}>
-                  <Box width="200px" height="250px" position="relative">
-                    <Image src={URL?.createObjectURL(item.src)} fill className="imageStyle" alt="asda" />
-                  </Box>
-                </Grid>
-              )
-            })} */}
-
-            {/* {productImages
-              ? Object.values(productImages).map((item, index) => {
-                  return (
-                    <Grid item key={index}>
-                      <Box width="200px" height="250px" position="relative">
-                        <Image src={URL?.createObjectURL(item)} fill className="imageStyle" alt="asda" />
-                      </Box>
-                    </Grid>
-                  )
-                })
-              : null} */}
-
-            {/* {!productImages &&
-              getValues().imageFiles.map((item: string, index: number) => (
-                <Grid item key={index}>
-                  <Box width="200px" height="250px" position="relative">
-                    <Image src={`/images/productImages/${item}`} fill className="imageStyle" alt={item} />
-                  </Box>
-                </Grid>
-              ))} */}
           </Grid>
         </CardContent>
       </Card>

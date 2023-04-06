@@ -32,6 +32,7 @@ import PropertiesDnD from "@/components/sections/admin-panel/PropertiesDnD"
 // ** icons
 import { FaPlus, FaSave } from "react-icons/fa"
 import { ImCross } from "react-icons/im"
+import { BsArrowsMove } from "react-icons/bs"
 import { useGlobalContext } from "@/contexts"
 
 // NOTE - YUP Schema
@@ -228,6 +229,7 @@ const Index = () => {
                                 {(provided) => (
                                   <Card ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                     <CardContent>
+                                      <BsArrowsMove size="30px" />
                                       <Grid container spacing={4}>
                                         <Grid item xs={8}>
                                           <Controller
