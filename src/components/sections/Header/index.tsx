@@ -144,7 +144,7 @@ const Header = () => {
                       <Grid item xs={12} key={sectionIndex}>
                         <Grid container>
                           <Grid item xs={12}>
-                            <Typography variant="h6" textTransform="capitalize" fontWeight={700} color={theme.palette.customColors?.altText}>
+                            <Typography variant="h6" textTransform="capitalize" fontWeight={700} color={theme.palette.customColors?.darkText}>
                               {section.value}
                             </Typography>
                           </Grid>
@@ -164,7 +164,7 @@ const Header = () => {
                                           variant="body2"
                                           textTransform="capitalize"
                                           fontWeight={500}
-                                          color={theme.palette.customColors?.altText}
+                                          color={theme.palette.customColors?.darkText}
                                         >
                                           {compareProduct?.productProperties![sectionIndex][index]!}
                                         </Typography>
