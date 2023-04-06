@@ -6,7 +6,7 @@ import dynamic from "next/dynamic"
 import { useTheme } from "next-themes"
 
 // ** MUI Imports
-import { Card, CardContent, Grid, IconButton } from "@mui/material"
+import { Card, CardContent, Grid, IconButton, useTheme as themeOptions } from "@mui/material"
 
 // ** Icons
 const UIWeatherSunny = dynamic(() => import("mdi-material-ui/WeatherSunny"), { ssr: false })
@@ -19,6 +19,8 @@ const Header = () => {
   const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
+  // ** Calls
+  const theme = themeOptions()
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), [])
 
@@ -26,7 +28,7 @@ const Header = () => {
     <Grid item width="100%">
       <Grid container className="headerContainer">
         <Grid item width="100%" className="topHeaderWrapper">
-          <Grid container className="insideWrapper" width="100%" maxWidth="1370px" justifyContent="center" mx="auto" sx={{ background: "lightGray" }}>
+          <Grid container className="insideWrapper" width="100%" maxWidth="1370px" justifyContent="center" mx="auto" sx={{ background: "black" }}>
             <Grid item width="100%" px="2rem">
               <Grid container spacing={5} justifyContent="space-between">
                 <Grid item></Grid>

@@ -7,7 +7,7 @@ import { GoMailRead } from "react-icons/go"
 const SubscribeBlock = () => {
   const theme = useTheme()
   return (
-    <Grid container rowSpacing={4} p="1.25rem" sx={{ background: "#F4F4F4" }}>
+    <Grid container rowSpacing={4} p="1.25rem" sx={{ background: theme.palette.background.paper }} color={theme.palette.text.primary}>
       <Grid item xs={12}>
         <Typography variant="h6" textAlign="center" textTransform="uppercase" fontWeight="700">
           SUBSCRIBE NEWSLETTER
@@ -30,7 +30,7 @@ const SubscribeBlock = () => {
             ),
           }}
           InputLabelProps={{
-            sx: { borderRadius: "250px", color: "secondary" },
+            sx: { borderRadius: "250px", color: theme.palette.text.secondary },
           }}
         />
       </Grid>

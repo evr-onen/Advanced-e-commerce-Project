@@ -206,10 +206,12 @@ const Index = (props: ParamsType) => {
                               <Typography
                                 variant="body2"
                                 sx={{
-                                  color: "white",
                                   p: "5px 8px",
                                   borderRadius: "10px",
                                 }}
+                                color={theme.palette.customColors?.darkText}
+                                fontWeight={600}
+                                textTransform="uppercase"
                               >
                                 {variantName}
                               </Typography>

@@ -2,7 +2,7 @@
 import * as React from "react"
 
 // ** MUI Imports
-import { Tabs, Tab, Typography, Box } from "@mui/material"
+import { Tabs, Tab, Typography, Box, useTheme } from "@mui/material"
 
 // ** Components
 import TabProperties from "./TabProperties"
@@ -41,6 +41,9 @@ function TabPanel(props: TabPanelProps) {
 const TabsProduct = (props: PropsType) => {
   const { productData } = props
 
+  // ** Calls
+  const theme = useTheme()
+
   // ** States
   const [value, setValue] = React.useState(0)
 
@@ -52,10 +55,15 @@ const TabsProduct = (props: PropsType) => {
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Description" {...a11yProps(0)} />
-          <Tab label="Details" {...a11yProps(1)} />
-          <Tab label="Comments" {...a11yProps(2)} />
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+          sx={{ "& .Mui-selected": { color: theme.palette.text?.primary } }}
+        >
+          <Tab label="Description" {...a11yProps(0)} sx={{ color: theme.palette.text?.secondary }} />
+          <Tab label="Details" {...a11yProps(1)} sx={{ color: theme.palette.text?.secondary }} />
+          <Tab label="Comments" {...a11yProps(2)} sx={{ color: theme.palette.text?.secondary }} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>

@@ -319,18 +319,20 @@ const Index = (props: ParamsType) => {
                               onClick={makeMinus}
                               disabled={product?.quantity! || Number(selectedVariantObj) ? false : true}
                             >
-                              <FaMinus fontSize="20px" />
+                              <FaMinus fontSize="20px" color={theme.palette.customColors?.darkText} />
                             </IconButton>
                           </InputAdornment>
                         ),
                         endAdornment: (
                           <InputAdornment position="end">
                             <IconButton onClick={makePlus} disabled={product?.quantity! || Number(selectedVariantObj) ? false : true}>
-                              <FaPlus fontSize="20px" />
+                              <FaPlus fontSize="20px" color={theme.palette.customColors?.darkText} />
                             </IconButton>
                           </InputAdornment>
                         ),
-                        sx: { "& input": { fontSize: "25px", py: "8px", textAlign: "center" } },
+                        sx: {
+                          "& input": { color: theme.palette.customColors?.darkText, fontSize: "25px", py: "8px", textAlign: "center" },
+                        },
                       }}
                       InputLabelProps={{
                         sx: { borderRadius: "250px", color: "secondary" },
@@ -358,9 +360,9 @@ const Index = (props: ParamsType) => {
                       onClick={addCompareProduct}
                     >
                       {compareProducts.findIndex((compareItem) => compareItem.id === product?.id)! === -1 ? (
-                        <MdCompareArrows color="white" />
-                      ) : (
                         <MdCompareArrows color="black" />
+                      ) : (
+                        <MdCompareArrows color={theme.palette.text.secondary} />
                       )}
                     </Button>
                   </Grid>

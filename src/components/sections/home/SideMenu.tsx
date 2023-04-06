@@ -41,15 +41,15 @@ const SideMenu = () => {
   const renderIcon = (data: string) => {
     switch (data) {
       case "Fashion":
-        return <GiLargeDress color="secondary" />
+        return <GiLargeDress />
       case "Electronics":
-        return <MdOutlineElectricalServices color="secondary" />
+        return <MdOutlineElectricalServices />
       case "Gifts":
-        return <AiFillGift color="secondary" />
+        return <AiFillGift />
       case "Home & Garden":
-        return <RiPlantFill color="secondary" />
+        return <RiPlantFill />
       case "Music":
-        return <GiMicrophone color="secondary" />
+        return <GiMicrophone />
       default:
         break
     }
@@ -83,7 +83,6 @@ const SideMenu = () => {
             sx={{
               zIndex: "100",
               boxShadow: " rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;",
-              background: "white",
               width: "31.25rem",
               scale: "0.85",
               py: 0,
@@ -93,12 +92,13 @@ const SideMenu = () => {
               position: "absolute",
               left: "90%",
               top: 0,
+              background: theme.palette.background.paper,
             }}
           >
             {Object.keys(tmpContainer[section]).map((mainCat, i) => {
               return (
                 <Grid key={i} item sx={{ padding: "1.5625rem" }} xs={6}>
-                  <Typography variant="subtitle1" fontWeight="700" textTransform="uppercase" textAlign="center">
+                  <Typography variant="subtitle1" fontWeight="700" textTransform="uppercase" textAlign="center" color={theme.palette.text.primary}>
                     {mainCat}
                   </Typography>
                   <Grid container flexDirection="column" alignContent="center">
@@ -120,7 +120,7 @@ const SideMenu = () => {
   }
 
   return (
-    <Box sx={{ py: 0, border: "0.5px solid rgba(0, 0, 0, 0.12)" }}>
+    <Box sx={{ py: 0, border: "0.5px solid rgba(0, 0, 0, 0.12)", background: theme.palette.background.paper }}>
       <MenuList component="ul" sx={{ py: 0 }}>
         {renderMenu()}
       </MenuList>

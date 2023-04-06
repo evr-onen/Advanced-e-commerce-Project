@@ -26,7 +26,7 @@ const SingleCommentSlider = () => {
           <Grid item xs={12}>
             <Grid container>
               <Grid item xs={12}>
-                <Typography textAlign="center" fontWeight="600" fontSize="1.5rem" color="black">
+                <Typography textAlign="center" fontWeight="600" fontSize="1.5rem" color={theme.palette.customColors?.altText}>
                   John Smith
                 </Typography>
               </Grid>
@@ -58,7 +58,7 @@ const SingleCommentSlider = () => {
           <Grid item xs={12}>
             <Grid container>
               <Grid item xs={12}>
-                <Typography textAlign="center" fontWeight="600" fontSize="1.5rem" color="black">
+                <Typography textAlign="center" fontWeight="600" fontSize="1.5rem" color={theme.palette.customColors?.altText}>
                   John Smith
                 </Typography>
               </Grid>
@@ -90,7 +90,7 @@ const SingleCommentSlider = () => {
           <Grid item xs={12}>
             <Grid container>
               <Grid item xs={12}>
-                <Typography textAlign="center" fontWeight="600" fontSize="1.5rem" color="black">
+                <Typography textAlign="center" fontWeight="600" fontSize="1.5rem">
                   John Smith
                 </Typography>
               </Grid>

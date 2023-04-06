@@ -1,4 +1,4 @@
-import { Grid, IconButton, InputAdornment, TextField } from "@mui/material"
+import { Grid, IconButton, InputAdornment, TextField, useTheme } from "@mui/material"
 import React, { forwardRef, useRef, useState } from "react"
 import { FaMinus, FaPlus } from "react-icons/fa"
 
@@ -14,6 +14,9 @@ interface PropsType {
 
 const PlusMInusInput = forwardRef((props: PropsType, inputRef) => {
   const { isDisable, width, iconSize, height, padY, takeQuantity, defaultQuantity } = props
+
+  // ** Calls
+  const theme = useTheme()
 
   // ** States
   const [quantity, setQuantity] = useState<number>(defaultQuantity)
@@ -48,18 +51,18 @@ const PlusMInusInput = forwardRef((props: PropsType, inputRef) => {
           startAdornment: (
             <InputAdornment position="start">
               <IconButton onClick={makeMinus} /* disabled={!isDisable} */>
-                <FaMinus fontSize={`${iconSize}px`} />
+                <FaMinus fontSize={`${iconSize}px`} color={theme.palette.customColors?.darkText} />
               </IconButton>
             </InputAdornment>
           ),
           endAdornment: (
             <InputAdornment position="end">
               <IconButton onClick={makePlus} /* disabled={!isDisable} */>
-                <FaPlus fontSize={`${iconSize}px`} />
+                <FaPlus fontSize={`${iconSize}px`} color={theme.palette.customColors?.darkText} />
               </IconButton>
             </InputAdornment>
           ),
-          sx: { "& input": { fontSize: `${height}px`, py: `${padY}px`, textAlign: "center" } },
+          sx: { color: theme.palette.customColors?.darkText, "& input": { fontSize: `${height}px`, py: `${padY}px`, textAlign: "center" } },
         }}
       />
     </Grid>

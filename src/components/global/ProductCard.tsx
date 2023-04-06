@@ -34,7 +34,16 @@ const ProductCard = (props: PropsType) => {
   return (
     <>
       <Grid item xs={8} sm={4} md={3} className="allProduct">
-        <Card sx={{ position: "relative", "&:hover": { boxShadow: "15" } }} elevation={4}>
+        <Card
+          className="productCard"
+          sx={{
+            position: "relative",
+            "&:hover": {
+              boxShadow: ` ${theme.palette.text.primary} 0px 14px 28px, ${theme.palette.text.primary} 0px 10px 10px  `,
+            },
+          }}
+          elevation={4}
+        >
           <CardContent>
             <Link href={`/allproducts/${productData.id}`}>
               <Grid
