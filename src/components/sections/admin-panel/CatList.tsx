@@ -17,10 +17,11 @@ interface PropsType {
   data: { id: number; label: string }[] | []
   setFunction: (catData: { id: number; label: string }, listType: string, action: string) => void
   dataName: string
+  canItDelete: (id: number, catType: string) => boolean
 }
 
 const CatList = (props: PropsType) => {
-  const { data, setFunction, dataName } = props
+  const { data, setFunction, dataName, canItDelete } = props
 
   // ** Calls
   const theme = useTheme()
@@ -34,7 +35,7 @@ const CatList = (props: PropsType) => {
   // ** Handler Funcs
   const ShowModalHandler = (id?: number) => {
     setShow((prev) => !prev)
-    console.log(id)
+
     if (id) {
       let tmtString = data.find((item) => item.id === Number(id))!
 
@@ -77,9 +78,14 @@ const CatList = (props: PropsType) => {
             </IconButton>
           </Tooltip>
           <Tooltip title="delete">
-            <IconButton onClick={() => setFunction({ id: params.row.id, label: params.row.label }, dataName.toLowerCase(), "delete")}>
-              <MdDelete />
-            </IconButton>
+            <Box>
+              <IconButton
+                onClick={() => setFunction({ id: params.row.id, label: params.row.label }, dataName.toLowerCase(), "delete")}
+                disabled={!canItDelete(params.row.id, dataName.toLowerCase())}
+              >
+                <MdDelete />
+              </IconButton>
+            </Box>
           </Tooltip>
         </>
       ),

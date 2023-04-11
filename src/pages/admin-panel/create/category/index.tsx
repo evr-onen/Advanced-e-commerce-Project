@@ -7,8 +7,16 @@ import CatList from "@/components/sections/admin-panel/CatList"
 // ** Contex
 import { useGlobalContext } from "@/contexts"
 
+// **Sweet Alert
+import useSwal from "@/hooks/useSwal"
+const Swal = useSwal
+import toast from "react-hot-toast"
+
+// ** Vars
+let tmpArr: { id: number; label: string }[] = []
+
 const Index = () => {
-  const { sectionCategory, setSectionCategory, mainCategory, setMainCategory, subCategory, setSubCategory } = useGlobalContext()
+  const { sectionCategory, setSectionCategory, mainCategory, setMainCategory, subCategory, setSubCategory, products } = useGlobalContext()
 
   // ** Calls
   const theme = useTheme()
@@ -16,46 +24,141 @@ const Index = () => {
 
   // ** handler Fonks
   const catEditDeleteHandler = (catData: { id: number; label: string }, listType: string, action: string) => {
-    let tmpArr = []
+    tmpArr = []
+    console.log(listType)
     switch (listType) {
       case "section":
         tmpArr = [...sectionCategory]
         if (action === "edit") {
           tmpArr.find((item) => item.id === catData.id)!.label = catData.label
+          setSectionCategory(tmpArr)
+          toast.success("Category Changed!", {
+            duration: 2000,
+          })
         } else if (action === "create") {
           tmpArr = [...tmpArr, { id: catData.id, label: catData.label }]
+          setSectionCategory(tmpArr)
+          toast.success("Category Created!", {
+            duration: 2000,
+          })
         } else {
-          tmpArr = tmpArr.filter((item) => item.id !== catData.id)
+          if (canItDelete(catData.id, "section")) {
+            Swal.fire({
+              title: "Are you sure?",
+              text: "You won't be able to revert this!",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                tmpArr = tmpArr.filter((item) => item.id !== catData.id)
+                setSectionCategory(tmpArr)
+                Swal.fire("Deleted!", "The Category has been deleted.", "success")
+                toast.success("The Category has been deleted.", {
+                  duration: 2000,
+                })
+              }
+            })
+          }
         }
-        setSectionCategory(tmpArr)
 
         break
       case "main":
         tmpArr = [...mainCategory]
         if (action === "edit") {
           tmpArr.find((item) => item.id === catData.id)!.label = catData.label
+          setMainCategory(tmpArr)
+          toast.success("Category Changed!", {
+            duration: 2000,
+          })
         } else if (action === "create") {
           tmpArr = [...tmpArr, { id: catData.id, label: catData.label }]
+          setMainCategory(tmpArr)
+          toast.success("Category Created!", {
+            duration: 2000,
+          })
         } else {
-          tmpArr = tmpArr.filter((item) => item.id !== catData.id)
+          if (canItDelete(catData.id, "main")) {
+            Swal.fire({
+              title: "Are you sure?",
+              text: "You won't be able to revert this!",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                tmpArr = tmpArr.filter((item) => item.id !== catData.id)
+                setMainCategory(tmpArr)
+                Swal.fire("Deleted!", "The Category has been deleted.", "success")
+                toast.success("The Category has been deleted.", {
+                  duration: 2000,
+                })
+              }
+            })
+          }
         }
-        setMainCategory(tmpArr)
         break
+
       case "sub":
         tmpArr = [...subCategory]
         if (action === "edit") {
           tmpArr.find((item) => item.id === catData.id)!.label = catData.label
+          setSubCategory(tmpArr)
+          toast.success("Category Changed!", {
+            duration: 2000,
+          })
         } else if (action === "create") {
           tmpArr = [...tmpArr, { id: catData.id, label: catData.label }]
+          setSubCategory(tmpArr)
+          toast.success("Category Created!", {
+            duration: 2000,
+          })
         } else {
-          tmpArr = tmpArr.filter((item) => item.id !== catData.id)
+          if (canItDelete(catData.id, "sub")) {
+            Swal.fire({
+              title: "Are you sure?",
+              text: "You won't be able to revert this!",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                tmpArr = tmpArr.filter((item) => item.id !== catData.id)
+                setSubCategory(tmpArr)
+                Swal.fire("Deleted!", "The Category has been deleted.", "success")
+                toast.success("The Category has been deleted.", {
+                  duration: 2000,
+                })
+              }
+            })
+          }
         }
-        setSubCategory(tmpArr)
         break
 
       default:
         break
     }
+  }
+
+  const canItDelete = (id: number, catType: string) => {
+    switch (catType) {
+      case "section":
+        if (products.findIndex((product) => product.section_cat.id === id) === -1) return true
+        break
+      case "main":
+        if (products.findIndex((product) => product.main_cat.id === id) === -1) return true
+        break
+      case "sub":
+        if (products.findIndex((product) => product.sub_cat.id === id) === -1) return true
+        break
+    }
+    return false
   }
 
   return (
@@ -68,7 +171,7 @@ const Index = () => {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <CatList data={sectionCategory} setFunction={catEditDeleteHandler} dataName="Section" />
+            <CatList data={sectionCategory} setFunction={catEditDeleteHandler} dataName="Section" canItDelete={canItDelete} />
           </Grid>
         </Grid>
       </Grid>
@@ -80,7 +183,7 @@ const Index = () => {
             </Typography>
           </Grid>
           <Grid item md={12}>
-            <CatList data={mainCategory} setFunction={catEditDeleteHandler} dataName="Main" />
+            <CatList data={mainCategory} setFunction={catEditDeleteHandler} dataName="Main" canItDelete={canItDelete} />
           </Grid>
         </Grid>
       </Grid>
@@ -92,7 +195,7 @@ const Index = () => {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <CatList data={subCategory} setFunction={catEditDeleteHandler} dataName="Sub" />
+            <CatList data={subCategory} setFunction={catEditDeleteHandler} dataName="Sub" canItDelete={canItDelete} />
           </Grid>
         </Grid>
       </Grid>
