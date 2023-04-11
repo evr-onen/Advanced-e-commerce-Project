@@ -227,7 +227,7 @@ export const dummyProducts = [
       },
     ],
     description: "Mollitia aut velit n",
-    imageFiles: ["1.webp", "2.webp"],
+    imageFiles: ["product-7.jpg", "product-11.jpg"],
     isShouldUseVariant: true,
     productProperties: [
       ["Scott Logan 1", "Scott Logan 2", "Scott Logan 3"],
