@@ -231,8 +231,8 @@ export const dummyProducts = [
     isShouldUseVariant: true,
     productProperties: [
       ["Scott Logan 1", "Scott Logan 2", "Scott Logan 3"],
-      ["Scott Logan 11", "Scott Logan 22"],
-      ["Scott Logan 111", "Scott Logan 222"],
+      ["Scott Logan 11", "Scott Logan 22", "Scott Logan 33"],
+      ["Scott Logan 111", "Scott Logan 222" , "Scott Logan 333"],
     ],
     quantity: 48,
     rowVariantData: [
