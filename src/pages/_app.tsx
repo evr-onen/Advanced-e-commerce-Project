@@ -12,6 +12,9 @@ import { Grid } from "@mui/material"
 // ** Create Theme
 import PageProvider from "src/theme/helpers/PageProvider"
 
+// ** Toaster
+import { Toaster } from "react-hot-toast"
+
 // ** Components Imports
 import Header from "src/components/sections/Header"
 import Footer from "src/components/sections/Footer"
@@ -67,6 +70,8 @@ const App: FC<MUIAppProps> = ({ Component, pageProps, emotionCache }) => {
             </Grid>
           )}
         </Grid>
+
+        <Toaster toastOptions={{ position: "top-right", className: "react-hot-toast" }} />
       </GlobalContextProvider>
     </PageProvider>
   )

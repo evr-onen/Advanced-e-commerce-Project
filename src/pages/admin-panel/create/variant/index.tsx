@@ -34,6 +34,11 @@ import { yupResolver } from "@hookform/resolvers/yup"
 // ** Components
 import VariantCardSection from "@/components/sections/admin-panel/VariantCardSection"
 
+// **Sweet Alert
+import useSwal from "@/hooks/useSwal"
+const Swal = useSwal
+import toast from "react-hot-toast"
+
 const schema = yup.object({
   variantName: yup.string().required("Type is required"),
   variantValues: yup.array().of(
@@ -82,19 +87,56 @@ const CreateVariant = forwardRef((props, ref) => {
   const handleOnSubmit = (data: VariantsType) => {
     console.log(data)
     if (variants.every((item) => item.variantName !== data.variantName)) {
-      let variantData = [...variants]
-      variantData.push({ ...data, id: Date.now() })
-      setVariants(variantData as never)
+      // ** edit variant
+      if (!!data.id) {
+        if (variants.every((item) => item.variantName !== data.variantName)) {
+          console.log("edit ")
+          let variantData = [...variants]
+          variantData.find((item) => item.id === data.id)!.variantName = data.variantName
+          variantData.find((item) => item.id === data.id)!.variantValues = data.variantValues
+          setVariants(variantData as never)
+          toast.success("Variant Edited!", {
+            duration: 2000,
+          })
+        }
+      } else {
+        // ** edit variant
+
+        console.log("create ")
+        let variantData = [...variants]
+        variantData.push({ ...data, id: Date.now() })
+        setVariants(variantData as never)
+        toast.success("Variant Created!", {
+          duration: 2000,
+        })
+      }
+      setIsOpen(false)
+      reset()
     } else {
-      let variantData = [...variants]
-      variantData.find((item) => item.id === data.id)!.variantValues = data.variantValues
-      setVariants(variantData as never)
+      toast.error("same name already used", {
+        duration: 2000,
+      })
     }
-    reset()
   }
-  console.log(products)
+
   const minuss = (index: number) => {
-    checkProduct(getValues().variantName, getValues().variantValues[index].value) && remove(index)
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        checkProduct(getValues().variantName, getValues().variantValues[index].value) && remove(index)
+        Swal.fire("Deleted!", "Variant Value Deleted!", "success")
+        toast.success("Variant Value Deleted!", {
+          duration: 2000,
+        })
+      }
+    })
   }
 
   const renderSelectItem = () => {
@@ -150,7 +192,7 @@ const CreateVariant = forwardRef((props, ref) => {
     })
     return canUdoIt
   }
-  console.log(checkProduct)
+
   return (
     <Grid container spacing={4}>
       <Grid item xs={12}>
@@ -274,7 +316,7 @@ const CreateVariant = forwardRef((props, ref) => {
                       ))}
                       <Grid item xs={12}>
                         <Stack direction="row" justifyContent="flex-end" spacing={4}>
-                          <Button variant="contained" type="submit" onClick={() => setIsOpen(false)}>
+                          <Button variant="contained" type="submit">
                             save
                           </Button>
                           <Button variant="contained" type="submit" onClick={() => setIsOpen(false)}>

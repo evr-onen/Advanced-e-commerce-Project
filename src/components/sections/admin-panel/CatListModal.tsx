@@ -66,7 +66,7 @@ const CatListModal = (props: PropsType) => {
           setFunction({ id: data.id, label: data.label }, listType, "edit")
         }
         break
-      case "main":
+      case "sub":
         if (subCategory.every((item) => item.id !== data.id)) {
           setFunction({ id: Date.now(), label: data.label }, listType, "create")
         } else {

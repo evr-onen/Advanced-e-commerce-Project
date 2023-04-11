@@ -18,8 +18,8 @@ const readFile = (req: NextApiRequest, saveLocally: boolean): Promise<{ fields: 
   const form = formidable(options)
   return new Promise((resolve, reject) => {
     form.parse(req, (err, fields, files) => {
-      console.log(files)
-      console.log(fields)
+      // console.log(files)
+      // console.log(fields)
       if (err) reject(err)
       resolve({ fields, files })
     })

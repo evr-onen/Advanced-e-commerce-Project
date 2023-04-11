@@ -51,6 +51,12 @@ const schema = yup.object().shape({
     name: yup.string().required("name can not be EMPTY"),
   }),
 })
+
+// **Sweet Alert
+import useSwal from "@/hooks/useSwal"
+const Swal = useSwal
+import toast from "react-hot-toast"
+
 // ** Types
 import { PropertyType } from "@/types/context"
 import { GetServerSideProps } from "next"
@@ -106,10 +112,16 @@ const Index = () => {
 
     if (properties.findIndex((item) => item.id === data.properties.id) === -1) {
       setProperties([...properties, { ...data.properties, id: Date.now() }])
+      toast.success("The Properties has been Created.", {
+        duration: 2000,
+      })
     } else {
       let tmpArr = [...properties]
       tmpArr = tmpArr.filter((item) => item.id !== data.properties.id)
       setProperties([...tmpArr, data.properties])
+      toast.success("The Properties has been Edited.", {
+        duration: 2000,
+      })
     }
     setSelectedProperty(null)
     reset(defaultValues)
@@ -122,17 +134,29 @@ const Index = () => {
   console.log(errors)
 
   const deleteHandler = () => {
-    if (selectedProperty) {
-      // let tmpArr=[...properties]
-      let tmpArr = properties.filter((propertiesObj) => propertiesObj.id !== selectedProperty!.id)
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (selectedProperty) {
+          let tmpArr = properties.filter((propertiesObj) => propertiesObj.id !== selectedProperty!.id)
 
-      setProperties(tmpArr!)
-      setSelectedProperty(null)
-      reset(defaultValues)
-      // if (selectedRef.current != undefined) {
-      //   selectedRef.current.value! = ""
-      // }
-    }
+          setProperties(tmpArr!)
+          setSelectedProperty(null)
+          reset(defaultValues)
+        }
+        Swal.fire("Deleted!", "The Category has been deleted.", "success")
+        toast.success("The Category has been deleted.", {
+          duration: 2000,
+        })
+      }
+    })
   }
   return (
     <Grid container className="insideWrapper" justifyContent="center" rowSpacing={4}>
