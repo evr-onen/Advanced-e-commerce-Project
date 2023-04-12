@@ -232,13 +232,10 @@ export const dummyProducts = [
     productProperties: [
       ["Scott Logan 1", "Scott Logan 2", "Scott Logan 3"],
       ["Scott Logan 11", "Scott Logan 22", "Scott Logan 33"],
-      ["Scott Logan 111", "Scott Logan 222" , "Scott Logan 333"],
+      ["Scott Logan 111", "Scott Logan 222", "Scott Logan 333"],
     ],
     quantity: 48,
-    rowVariantData: [
-      { quantity: "123", color: "black", size: "small" },
-      { quantity: "2342", color: "blue", size: "large" },
-    ],
+
     selected_properties: {
       id: 1,
       name: "Laptop",

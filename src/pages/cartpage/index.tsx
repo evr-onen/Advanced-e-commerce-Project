@@ -32,18 +32,31 @@ const Index = () => {
   // ** Calls
   const theme = useTheme()
   const isSm = useMediaQuery(theme.breakpoints.down("sm"))
-
+  let jsxItems: any
   const renderProductUnits = () => {
     totalPrice = 0
-    let ttt: JSX.Element[]
-    ttt = cartProducts.map((cartProduct) => {
-      let productData = products.find((product) => product.id === cartProduct.id)!
+    let tmpCartProducts = [...cartProducts]
 
-      totalPrice += Number(productData.price) * cartProduct.quantity
-      return <RowProduct productData={productData} cartProduct={cartProduct} key={productData?.id} />
+    jsxItems = tmpCartProducts.map((cartProduct, index) => {
+      let dataproduct = products.find((product) => product.id === cartProduct.product_id)!
+
+      totalPrice += Number(dataproduct.price) * cartProduct.quantity
+      return cartProduct.quantity !== 0 && <RowProduct productData={dataproduct} cartProduct={cartProduct} key={index} destroyRow={destroyRow} />
     })
 
-    return ttt
+    return jsxItems
+  }
+
+  useEffect(() => {
+    cartProducts.map((cartItem) => {
+      cartItem.quantity === 0 && destroyRow(cartItem.id)
+    })
+    console.log(cartProducts)
+  }, [cartProducts])
+
+  const destroyRow = (id: number) => {
+    let tmpObj = [...cartProducts]
+    setCartProducts(tmpObj.filter((item) => item.id !== id))
   }
 
   return (

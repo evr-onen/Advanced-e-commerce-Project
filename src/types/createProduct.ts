@@ -12,7 +12,7 @@ export type ProductType = {
     variantName: string
     variantValues: { value: string }[]
   }[]
-  rowVariantData: { [key: string]: string }[]
+  rowVariantData?: { [key: string]: string }[]
   description: string
   imageFiles: string[]
   selected_properties?: PropertyType

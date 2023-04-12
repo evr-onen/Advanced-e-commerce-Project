@@ -34,5 +34,9 @@ type PropertyTitleItemType = {
 
 export type CartProductType = {
   id: number
+  product_id: number
   quantity: number
+  variantValue?: {
+    [key: string]: string
+  }
 }
