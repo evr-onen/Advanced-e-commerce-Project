@@ -31,6 +31,7 @@ import { ProductType } from "src/types/createProduct"
 import { BsHandbag } from "react-icons/bs"
 import { useRouter } from "next/router"
 import TabsProduct from "@/components/sections/admin-panel/product/TabsProduct"
+import { CartProductType } from "@/types/context"
 // import { useRouter } from "next/navigation"
 
 type ProductVariantsObjType = {
@@ -47,7 +48,9 @@ interface ParamsType {
     }
   }
 }
-
+type SelectedVariantType = {
+  [key: string]: string
+}
 // ** Vars
 let tmpProductVariantsObj: ProductVariantsObjType = {}
 
@@ -62,12 +65,12 @@ const Index = (props: ParamsType) => {
   const swiperRef = useRef<SwiperRef>()
   const quantityRef = useRef<HTMLInputElement>()
   const [checkedButton, setCheckedButton] = useState<{ [key: string]: string }>({})
-  const [selectedVariantObj, setSelectedVariantObj] = useState<string>("")
+  const [selectedVariantObj, setSelectedVariantObj] = useState<SelectedVariantType>({ quantity: "0" })
 
   // ** Calls
   const theme = useTheme()
   const router = useRouter()
-  const { setWishlist, wishlist, products, setCompareProducts, compareProducts } = useGlobalContext()
+  const { setWishlist, wishlist, products, setCompareProducts, compareProducts, cartProducts, setCartProducts } = useGlobalContext()
   const isLarge = useMediaQuery(theme.breakpoints.down("lg"))
   const isSm = useMediaQuery(theme.breakpoints.down("sm"))
 
@@ -94,11 +97,11 @@ const Index = (props: ParamsType) => {
       Object.keys(variantProduct).map((variant: string) => {
         if (variant !== "quantity") {
           if (tmpProductVariantsObj.hasOwnProperty(variant)) {
-            if (tmpProductVariantsObj[variant].indexOf(product?.rowVariantData[index][variant]) === -1) {
-              tmpProductVariantsObj[variant].push(product?.rowVariantData[index][variant])
+            if (tmpProductVariantsObj[variant].indexOf(product?.rowVariantData![index][variant]) === -1) {
+              tmpProductVariantsObj[variant].push(product?.rowVariantData![index][variant])
             }
           } else {
-            tmpProductVariantsObj[variant] = [product?.rowVariantData[index][variant]]
+            tmpProductVariantsObj[variant] = [product?.rowVariantData![index][variant]]
           }
         }
       })
@@ -148,21 +151,36 @@ const Index = (props: ParamsType) => {
 
   const renderQuantity = () => {
     if (product !== undefined) {
-      if (Object.keys(product?.rowVariantData[0]!).length - 1 === Object.keys(checkedButton).length) {
-        let tmpObjVariantBtn = product?.rowVariantData.find((item) => {
-          return Object.keys(checkedButton).every((variantkey) => {
-            return item[variantkey] === checkedButton[variantkey]
+      console.log(product)
+      if (!Object.hasOwnProperty(product.quantity!)) {
+        if (Object.keys(product?.rowVariantData![0]!).length - 1 === Object.keys(checkedButton).length) {
+          let tmpObjVariantBtn = product?.rowVariantData!.find((item) => {
+            return Object.keys(checkedButton).every((variantkey) => {
+              return item[variantkey] === checkedButton[variantkey]
+            })
           })
-        })
-        if (tmpObjVariantBtn !== undefined) {
-          setSelectedVariantObj(tmpObjVariantBtn!.quantity as string)
-        } else {
-          setSelectedVariantObj("0")
+          console.log(tmpObjVariantBtn)
+          if (tmpObjVariantBtn !== undefined) {
+            setSelectedVariantObj(tmpObjVariantBtn!)
+          } else {
+            setSelectedVariantObj({ quantity: "0" })
+          }
         }
+      } else {
+        setSelectedVariantObj({ quantity: product.quantity!.toString() })
       }
     }
   }
-
+  const addToCart = () => {
+    let tmpCartItem: CartProductType | null = null
+    if (!Object.hasOwnProperty(product!.quantity!)) {
+      tmpCartItem = { id: Date.now(), quantity: quantity, product_id: product!.id!, variantValue: selectedVariantObj }!
+    } else {
+      tmpCartItem = { id: Date.now(), quantity: quantity!, product_id: product!.id!, variantValue: { quantity: product!.quantity?.toString()! } }!
+    }
+    console.log(tmpCartItem)
+    setCartProducts([...cartProducts, { ...tmpCartItem! }])
+  }
   const renderVariants = () => {
     if (productVariantsObj !== undefined) {
       return Object.keys(productVariantsObj as object)?.map((variantKey, index) => {
@@ -288,13 +306,16 @@ const Index = (props: ParamsType) => {
                   />
                 </Link>
               </Grid>
-              {selectedVariantObj || product?.quantity ? (
+              {selectedVariantObj?.quantity || product?.quantity ? (
                 <Grid item display="flex" alignItems="center" xs={12}>
                   <Typography variant="h6" fontWeight={700} mr="5px">
                     Stock Size :
                   </Typography>
 
-                  <Chip label={<Typography fontWeight="700">{selectedVariantObj || product?.quantity} in stok</Typography>} className="link" />
+                  <Chip
+                    label={<Typography fontWeight="700">{Number(selectedVariantObj?.quantity) || product?.quantity} in stok</Typography>}
+                    className="link"
+                  />
                 </Grid>
               ) : null}
 
@@ -308,7 +329,7 @@ const Index = (props: ParamsType) => {
                       autoComplete="off"
                       type="number"
                       value={quantity}
-                      disabled={product?.quantity! || Number(selectedVariantObj) ? false : true}
+                      disabled={product?.quantity! || Number(selectedVariantObj?.quantity) ? false : true}
                       inputRef={quantityRef}
                       onChange={(e) => setQuantity(Number(e.target.value))}
                       InputProps={{
@@ -317,7 +338,7 @@ const Index = (props: ParamsType) => {
                             <IconButton
                               sx={{ mr: "10px" }}
                               onClick={makeMinus}
-                              disabled={product?.quantity! || Number(selectedVariantObj) ? false : true}
+                              disabled={product?.quantity! || Number(selectedVariantObj?.quantity) ? false : true}
                             >
                               <FaMinus fontSize="20px" color={theme.palette.customColors?.darkText} />
                             </IconButton>
@@ -325,7 +346,7 @@ const Index = (props: ParamsType) => {
                         ),
                         endAdornment: (
                           <InputAdornment position="end">
-                            <IconButton onClick={makePlus} disabled={product?.quantity! || Number(selectedVariantObj) ? false : true}>
+                            <IconButton onClick={makePlus} disabled={product?.quantity! || Number(selectedVariantObj?.quantity) ? false : true}>
                               <FaPlus fontSize="20px" color={theme.palette.customColors?.darkText} />
                             </IconButton>
                           </InputAdornment>
@@ -340,7 +361,11 @@ const Index = (props: ParamsType) => {
                     />
                   </Grid>
                   <Grid item xs={12} sm={4} textAlign="center">
-                    <Button variant="contained" disabled={product?.quantity! > 0 || Number(selectedVariantObj) ? false : true}>
+                    <Button
+                      variant="contained"
+                      disabled={product?.quantity! > 0 || Number(selectedVariantObj?.quantity) ? false : true}
+                      onClick={addToCart}
+                    >
                       <AiOutlineShoppingCart fontSize="24px" />
                       <Typography fontWeight="700" fontSize="18px" textTransform="uppercase" ml="10px">
                         add to cart

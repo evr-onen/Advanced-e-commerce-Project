@@ -73,7 +73,7 @@ export const GlobalContextProvider = (props: any) => {
   const [subCategoryData, setSubCategoryData] = useState<CatsType[]>(dummySub)
   const [propertiesData, setPropertiesData] = useState<PropertyType[]>(properties)
   const [wishlistData, setWishlistData] = useState<number[] | []>([1, 2, 3])
-  const [cartProductsData, setCartProductsData] = useState<CartProductType[] | []>(dummyCartProduct)
+  const [cartProductsData, setCartProductsData] = useState<CartProductType[] | []>(dummyCartProduct! as never)
   const [compareProductsData, setCompareProducts] = useState<ProductType[] | []>([])
   // ** Hooks
   const router = useRouter()

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react"
 
 // ** MUI import
-import { Box, Card, CardContent, Divider, Fab, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material"
+import { Box, Card, CardContent, Chip, Divider, Fab, Grid, Stack, Typography, useMediaQuery, useTheme } from "@mui/material"
 
 // ** Icons
 import { ImCross } from "react-icons/im"
@@ -22,10 +22,11 @@ import { CartProductType } from "src/types/context"
 interface PropsType {
   productData: ProductType
   cartProduct: CartProductType
+  destroyRow: (id: number) => void
 }
 
 const RowProduct = (props: PropsType) => {
-  const { productData, cartProduct } = props
+  const { productData, cartProduct, destroyRow } = props
 
   // ** Calls
   const { cartProducts, setCartProducts } = useGlobalContext()
@@ -41,14 +42,38 @@ const RowProduct = (props: PropsType) => {
 
   useEffect(() => {
     let tmpObj = [...cartProducts]
-    if (quantity === 0) {
-      setCartProducts(tmpObj.filter((item) => item.id !== productData.id))
-    } else {
-      tmpObj.find((cartItem) => cartItem.id === cartProduct.id)!.quantity = quantity
-      setCartProducts(tmpObj)
-    }
+    tmpObj.find((cartItem) => cartItem.id === cartProduct.id)!.quantity = quantity
+    setCartProducts(tmpObj)
   }, [quantity])
 
+  const renderVariants = () => {
+    if (cartProducts !== undefined) {
+      let tmpCartData = cartProducts!.find((item) => item.id === cartProduct.product_id)
+      return Object.entries(cartProduct?.variantValue!).map((cartData, index) => {
+        if (cartData[0] === "quantity") return
+        return (
+          <React.Fragment key={index}>
+            <Grid item ml="0.5rem">
+              <Typography variant="body1" textTransform="uppercase" fontWeight="500" textAlign={isSm ? "center" : "left"}>
+                {cartData[0] + "    :"}
+              </Typography>
+            </Grid>
+            <Grid item ml="0.5rem">
+              <Chip
+                size="small"
+                label={
+                  <Typography variant="body1" textTransform="uppercase" fontWeight="300" textAlign={isSm ? "center" : "left"}>
+                    {cartData[1]}
+                  </Typography>
+                }
+                variant="filled"
+              />
+            </Grid>
+          </React.Fragment>
+        )
+      })
+    }
+  }
   return (
     <Grid item xs={12} key={productData?.id}>
       <Grid container height={isSm ? "auto" : "100px"} justifyContent="space-between" alignItems={isSm ? "center" : "start"}>
@@ -77,6 +102,9 @@ const RowProduct = (props: PropsType) => {
                   <Typography variant="h6" textTransform="uppercase" fontWeight="700" textAlign={isSm ? "center" : "left"}>
                     {productData.product_name}
                   </Typography>
+                </Grid>
+                <Grid item xs={12}>
+                  <Grid container>{renderVariants()}</Grid>
                 </Grid>
                 {isSm && (
                   <>
