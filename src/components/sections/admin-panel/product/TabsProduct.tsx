@@ -2,7 +2,7 @@
 import * as React from "react"
 
 // ** MUI Imports
-import { Tabs, Tab, Typography, Box, useTheme } from "@mui/material"
+import { Tabs, Tab, Box, useTheme } from "@mui/material"
 
 // ** Components
 import TabProperties from "./TabProperties"

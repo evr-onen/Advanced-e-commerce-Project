@@ -14,9 +14,7 @@ import { Controller, useFormContext } from "react-hook-form"
 import { CatsType } from "@/types/context"
 import { QuickAdd } from "@/components/global/quickAdd"
 
-interface PropsType {}
-
-const TopSection = forwardRef((props: PropsType, ref) => {
+const TopSection = forwardRef((_, ref) => {
   // ** Context API
   const { sectionCategory, setSectionCategory, mainCategory, setMainCategory, subCategory, setSubCategory } = useGlobalContext()
 
@@ -41,10 +39,8 @@ const TopSection = forwardRef((props: PropsType, ref) => {
       case "section_cat":
         if (sectionCategory.every((cat: CatsType) => cat.label !== label)) {
           setSectionCategory([...sectionCategory, { id, label }])
-          // setSectionCategory((prev) => [...prev, { id, label }])
           !!newvalue && setValue("section_cat", newvalue as any) // ** i will look after finish this project
         }
-
         break
       case "main_cat":
         if (mainCategory.every((cat) => cat.label !== label)) {
@@ -58,7 +54,6 @@ const TopSection = forwardRef((props: PropsType, ref) => {
           !!newvalue && setValue("sub_cat", newvalue as any) // **  i will look after finish this project
         }
         break
-
       default:
         break
     }

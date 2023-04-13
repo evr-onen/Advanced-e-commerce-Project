@@ -1,28 +1,11 @@
 // ** React Core
 import React, { useState, forwardRef } from "react"
-import Image from "next/image"
-import fs from "fs/promises"
-import path from "path"
 
 // ** Context API
 import { useGlobalContext } from "src/contexts"
 
 // ** MUI imports
-import {
-  Grid,
-  TextField,
-  Autocomplete,
-  Button,
-  FormHelperText,
-  Select,
-  MenuItem,
-  InputLabel,
-  FormControl,
-  Card,
-  CardContent,
-  useMediaQuery,
-  Box,
-} from "@mui/material"
+import { Grid, Button, Select, MenuItem, InputLabel, FormControl, Card, CardContent, useMediaQuery, Box } from "@mui/material"
 import { useTheme } from "@mui/material"
 
 // ** Third Party Imports
@@ -33,7 +16,6 @@ import Axios from "axios"
 
 // ** Types
 import { ProductType } from "src/types/createProduct"
-import { GetServerSideProps } from "next"
 
 // ** Components
 import AddProperties from "@/components/sections/admin-panel/product/addProperties"
@@ -116,7 +98,6 @@ interface PropsType {
 }
 
 const Index = forwardRef((props: PropsType, ref) => {
-  // const { dirs } = props
   const { products, setProducts } = useGlobalContext()
 
   // ** States
@@ -178,8 +159,9 @@ const Index = forwardRef((props: PropsType, ref) => {
       handleUpload()
       setProducts(productsData as never)
     } else {
-      let productsData = [...products]
+      let productsData: ProductType[] = [...products]
       let theProduct = productsData.find((item: ProductType) => item.id === data.id)!
+
       theProduct.product_name = data.product_name
       theProduct.price = data.price
       theProduct.section_cat = data.section_cat
@@ -194,6 +176,7 @@ const Index = forwardRef((props: PropsType, ref) => {
       theProduct.isShouldUseVariant = data.isShouldUseVariant
       !data.isShouldUseVariant ? (theProduct.quantity = data.quantity) : null
 
+      console.log(productsData)
       handleUpload()
       setProducts(productsData as never)
     }
@@ -220,6 +203,7 @@ const Index = forwardRef((props: PropsType, ref) => {
     reset(tmpProduct as never)
     setImageCount((prev) => prev + 1)
   }
+
   const takeProductImages = (data: FileList) => {
     setProductImages(data)
   }
@@ -258,7 +242,6 @@ const Index = forwardRef((props: PropsType, ref) => {
                   variant="contained"
                   onClick={() => {
                     reset(defaultValues)
-
                     setProductImages(null)
                   }}
                 >
@@ -269,7 +252,6 @@ const Index = forwardRef((props: PropsType, ref) => {
           </CardContent>
         </Card>
       </Grid>
-
       <Grid item xs={12}>
         <FormProvider {...methods}>
           <form onSubmit={handleSubmit(submitHandler as () => string)}>
@@ -297,14 +279,3 @@ const Index = forwardRef((props: PropsType, ref) => {
 Index.displayName = "Index"
 
 export default Index
-
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const props = { dirs: [] }
-//   try {
-//     const dirs = await fs.readdir(path.join(process.cwd(), "/public/images/productImages"))
-//     props.dirs = dirs as any
-//     return { props }
-//   } catch (error) {
-//     return { props }
-//   }
-// }

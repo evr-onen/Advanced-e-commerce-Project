@@ -1,8 +1,8 @@
 // ** Core
-import React, { forwardRef, useEffect } from "react"
+import React, { forwardRef } from "react"
 
 // ** MUI imports
-import { Autocomplete, Card, CardContent, Checkbox, FormControlLabel, FormHelperText, Grid, TextField, Typography, useTheme } from "@mui/material"
+import { Card, CardContent, Checkbox, FormControlLabel, FormHelperText, Grid, TextField, useTheme } from "@mui/material"
 
 // ** Context API
 import { useGlobalContext } from "@/contexts"
@@ -11,21 +11,16 @@ import { useGlobalContext } from "@/contexts"
 import { Controller, useWatch, useFormContext } from "react-hook-form"
 
 // ** Types
-import { PropertyType, PropertyTitleType } from "@/types/context"
+import { PropertyType } from "@/types/context"
 
 interface PropsType {}
 
-const TopSection = forwardRef((props: PropsType, ref) => {
-  const { properties, setProperties } = useGlobalContext()
-
+const TopSection = forwardRef((_, ref) => {
   // ** Calls
   const theme = useTheme()
+
   // ** Hooks
   const {
-    register,
-    reset,
-    setValue,
-    getValues,
     control,
     formState: { errors },
   } = useFormContext()
