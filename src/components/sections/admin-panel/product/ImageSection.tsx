@@ -1,6 +1,5 @@
 // ** Core
 import React, { forwardRef, useEffect } from "react"
-import Image from "next/image"
 
 // ** MUI imports
 import { Box, Button, Card, CardContent, Fab, FormHelperText, Grid, useMediaQuery, useTheme } from "@mui/material"
@@ -8,6 +7,8 @@ import { Box, Button, Card, CardContent, Fab, FormHelperText, Grid, useMediaQuer
 // ** Third Party
 import { useFieldArray, useFormContext, useWatch } from "react-hook-form"
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd"
+
+// ** Icons
 import { ImCross } from "react-icons/im"
 import NoSSR from "react-no-ssr"
 import { BsArrowsMove } from "react-icons/bs"

@@ -1,11 +1,5 @@
-// ** Core
-import React from "react"
-
 // ** Mui Imports
 import { Grid, Typography } from "@mui/material"
-
-// ** Context API
-import { useGlobalContext } from "@/contexts"
 
 // ** Types
 import { ProductType } from "@/types/createProduct"
@@ -15,11 +9,6 @@ interface PropsType {
 
 const TabProperties = (props: PropsType) => {
   const { productData } = props
-
-  console.log(productData)
-
-  // ** Calls
-  const { properties } = useGlobalContext()
 
   const renderTable = () => {
     return productData.selected_properties?.values.map((section, sectionIndex) => {

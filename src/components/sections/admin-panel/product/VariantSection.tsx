@@ -61,6 +61,7 @@ const VariantSection = forwardRef((props: PropsType, ref) => {
     control,
     name: "isShouldUseVariant",
   })
+
   useEffect(() => {
     if (shouldUseVariantWatch === false) reset({ ...getValues(), selected_variants: [], rowVariantData: [{ quantity: "" }] })
   }, [shouldUseVariantWatch])
@@ -96,7 +97,7 @@ const VariantSection = forwardRef((props: PropsType, ref) => {
                       )}
                     />
 
-                    {/* {errors.rowVariantData?[fieldIndex]?.quantity!  && ( // ts-ignore
+                    {/* {errors.rowVariantData?[fieldIndex]?.quantity!  && ( //@ ts-ignore
                      <FormHelperText error>{errors.rowVariantData?.[fieldIndex]?.quantity?.message?.toString()}</FormHelperText>  
                      )}  */}
                   </Grid>
@@ -149,7 +150,6 @@ const VariantSection = forwardRef((props: PropsType, ref) => {
       }
     })
   }
-
   return (
     <>
       {shouldUseVariantWatch && (

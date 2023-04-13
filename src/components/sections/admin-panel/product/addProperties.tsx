@@ -13,20 +13,15 @@ import { Controller, useWatch, useFormContext } from "react-hook-form"
 // ** Types
 import { PropertyType } from "@/types/context"
 
-interface PropsType {}
-
-const AddProperties = forwardRef((props: PropsType, ref) => {
+const AddProperties = forwardRef((_, ref) => {
   const { properties, setProperties } = useGlobalContext()
 
   // ** Calls
   const theme = useTheme()
   const isSmall = useMediaQuery(theme.breakpoints.down("sm"))
 
-  // ** Hooks
   const {
-    register,
     reset,
-    setValue,
     getValues,
     control,
     formState: { errors },
@@ -78,7 +73,6 @@ const AddProperties = forwardRef((props: PropsType, ref) => {
                                 />
                               )}
                             />
-
                             {errors.productProperties?.[ind as never]?.[index]! && (
                               <FormHelperText error>{(errors?.productProperties as any)![ind]![index].message!}</FormHelperText>
                             )}
@@ -95,7 +89,6 @@ const AddProperties = forwardRef((props: PropsType, ref) => {
       })
     }
   }
-
   return (
     <Grid container spacing={4} justifyContent="center">
       <Grid item xs={12} md={4} xl={3}>

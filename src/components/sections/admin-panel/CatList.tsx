@@ -59,7 +59,6 @@ const CatList = (props: PropsType) => {
         </Typography>
       ),
     },
-
     {
       field: "actions",
       flex: 1,
